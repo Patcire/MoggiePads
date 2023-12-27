@@ -6,8 +6,8 @@ import Navbar from "../components/NavBar.jsx";
 const LayoutRoot = () => {
     return (
         <>
-            < Outlet />
             <Navbar></Navbar>
+            < Outlet />
         </>
     )
 }

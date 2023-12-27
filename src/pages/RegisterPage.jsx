@@ -1,6 +1,21 @@
+import {useContext} from "react";
+import {UserContext} from "../context/UserContext.jsx";
+import {useNavigate} from "react-router-dom";
+
+
 const RegisterPage = () => {
+
+    const {user, setUser} = useContext(UserContext)
+    const navigate = useNavigate()
+
+    const register = () => {
+        setUser(true)
+        navigate("/")
+
+    }
+
     return(
-        <h1>Regístrate ya</h1>
+        <button onClick={register}>Registrarse</button>
     )
 }
 

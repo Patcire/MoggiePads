@@ -1,4 +1,3 @@
-import Navbar from "../components/NavBar.jsx";
 
 const LandPage = () => {
     return(
