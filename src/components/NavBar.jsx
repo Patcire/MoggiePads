@@ -17,33 +17,32 @@ const Navbar = () => {
 
 
     return (
-        <nav>
-            {
+
                 user ?
                     (
-                        <>
-                            <button onClick={() => navigate("/")}>Inicio</button>
-                            <button onClick={() => navigate("/profile")}>Mi Perfil</button>
-                            <button onClick={() => navigate("/feed")}>Feed</button>
-                            <button onClick={() => navigate("/anecdotes")}>Anecdotas</button>
-                            <button onClick={() => navigate("/contact")}>Contacto</button>
+                        <nav className={"navbar"}>
+                            <NavLink to={"/"}>Inicio</NavLink>
+                            <NavLink to={"/profile"}>Mi Perfil</NavLink>
+                            <NavLink to={"/feed"}>Feed</NavLink>
+                            <NavLink to={"/anecdotes"}>Anecdotas</NavLink>
+                            <NavLink to={"/contact"}>Contacto</NavLink>
                             <button onClick={() => logOut()}>Logout</button>
-                        </>
+                        </nav>
 
                     ) : (
-                        <>
-                            <button onClick={() => navigate("/")}>Inicio</button>
-                            <button onClick={() => navigate("/login")}>Login/Registro</button>
-                            <button onClick={() => navigate("/feed")}>Feed</button>
-                            <button onClick={() => navigate("/anecdotes")}>Anecdotas</button>
-                            <button onClick={() => navigate("/contact")}>Contacto</button>
+                        <nav className={"navbar"}>
+                            <NavLink to={"/"}>Inicio</NavLink>
+                            <NavLink to={"/login"}>Login/Registro</NavLink>
+                            <NavLink to={"/feed"}>Feed</NavLink>
+                            <NavLink to={"/anecdotes"}>Anecdotas</NavLink>
+                            <NavLink to={"/contact"}>Contacto</NavLink>
 
-                        </>
+                        </nav>
 
                     )
-            }
 
-        </nav>
+
+
 
     )
 }

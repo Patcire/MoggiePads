@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Nabla&family=Oxygen:wght@300&family=Raleway:ital,wght@0,400;0,600;1,100&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.web-name{
+    font-family: Nabla;
+    font-size: xxx-large;
+    
+}
+
+body{
+    background-color: moccasin;
+    margin: 2%;
+
+}
+
+.navbar{
+    font-family: Oxygen;
+    display: flex;
+    justify-content: right;
+    gap: 0.2%;
+}
+
+button{
+    font-size: large;
+}
+

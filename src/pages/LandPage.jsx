@@ -1,5 +1,6 @@
 
 const LandPage = () => {
+
     return(
         <section>
             <h1>LANDOPAGEE</h1>
