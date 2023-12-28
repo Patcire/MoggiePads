@@ -1,31 +1,76 @@
 @import url('https://fonts.googleapis.com/css2?family=Nabla&family=Oxygen:wght@300&family=Raleway:ital,wght@0,400;0,600;1,100&display=swap');
 
+/* General */
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-.web-name{
-    font-family: Nabla;
-    font-size: xxx-large;
-    
-}
-
 body{
-    background-color: moccasin;
+    font-family: Oxygen;
+    background-color: azure;
     margin: 2%;
 
 }
+/*----------*/
 
-.navbar{
-    font-family: Oxygen;
+/* Header */
+
+.header{
+    max-width: 100%;
+    width: 100%;
     display: flex;
-    justify-content: right;
-    gap: 0.2%;
+    justify-content: space-between;
+    height: 80px;
+    border-bottom: 2px solid #333;
+
 }
 
-button{
-    font-size: large;
+.header-navbar{
+
+    display: flex;
+    gap: 0.8%;
+
 }
 
+.header-navbar a{
+    margin-top: 9%;
+    text-decoration: none;
+    font-size: x-large;
+
+}
+
+.header-navbar a:hover{
+    font-weight: bold;
+
+}
+
+.header-navbar a:visited {
+    color: black;
+}
+
+.header-navbar a.active {
+    font-weight: bold; /* Set the bold style for the active link */
+}
+
+.header-name{
+    font-family: Nabla;
+    font-size: xxx-large;
+}
+
+.logout{
+    margin-top: 9%;
+    height: 30px;
+}
+
+/*----------*/
+
+/* Main */
+
+main{
+    margin-top: 5%;
+}
+
+/*----------*/
