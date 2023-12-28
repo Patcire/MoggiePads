@@ -20,17 +20,17 @@ const Navbar = () => {
 
                 user ?
                     (
-                        <nav className={"navbar"}>
+                        <nav className={"header-navbar"}>
                             <NavLink to={"/"}>Inicio</NavLink>
-                            <NavLink to={"/profile"}>Mi Perfil</NavLink>
+                            <NavLink to={"/profile"}>MiPerfil</NavLink>
                             <NavLink to={"/feed"}>Feed</NavLink>
                             <NavLink to={"/anecdotes"}>Anecdotas</NavLink>
                             <NavLink to={"/contact"}>Contacto</NavLink>
-                            <button onClick={() => logOut()}>Logout</button>
+                            <button className={"logout"} onClick={() => logOut()}>Logout</button>
                         </nav>
 
                     ) : (
-                        <nav className={"navbar"}>
+                        <nav className={"header-navbar"}>
                             <NavLink to={"/"}>Inicio</NavLink>
                             <NavLink to={"/login"}>Login/Registro</NavLink>
                             <NavLink to={"/feed"}>Feed</NavLink>
