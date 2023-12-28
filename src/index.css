@@ -10,7 +10,7 @@
 
 body{
     font-family: Oxygen;
-    background-color: azure;
+    background-color: #f5f8f8;
     margin: 2%;
 
 }
@@ -71,6 +71,32 @@ body{
 
 main{
     margin-top: 5%;
+}
+
+/*----------*/
+
+/* Feed */
+
+.cards{
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+
+}
+
+.cards__card{
+
+    text-align: center;
+    overflow: hidden;
+    border-radius: 5%;
+}
+
+.cards__card__photo{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5%;
 }
 
 /*----------*/
