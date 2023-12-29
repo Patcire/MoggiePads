@@ -5,8 +5,8 @@ import Card from "../components/Card.jsx";
 
 const FeedPage = () => {
 
-    const { info} = useFetch(`https://api.thecatapi.com/v1/images/search?limit=12&has_breeds=1&${token}`);
-
+    const { info} = useFetch(`https://api.thecatapi.com/v1/images/search?limit=12&has_breeds=1&${token}`)
+    console.log(info)
     return(
         <section className={"cards"}>
             {
