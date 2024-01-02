@@ -12,7 +12,7 @@ body{
     font-family: Oxygen;
     background-color: #f5f8f8;
     margin: 2%;
-
+    height: 100%
 }
 /*----------*/
 
@@ -70,12 +70,25 @@ body{
 /* Main */
 
 main{
+    position: relative;
     margin-top: 5%;
 }
 
 /*----------*/
 
 /* Feed */
+
+.cargando{
+    position: absolute;
+    text-align: center;
+
+
+}
+
+.endPageRef{
+    height: 0;
+    overflow: hidden;
+}
 
 .cards{
     margin-top: 1%;
@@ -126,5 +139,10 @@ main{
 
 }
 
+
+/*----------*/
+
+
+/*  */
 
 /*----------*/
