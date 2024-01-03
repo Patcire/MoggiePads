@@ -1,29 +1,29 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
-const useFetch = (urlParameters) => {
+const useFetch = (urlParameters, page) => {
 
-    const [page, setPage] = useState(0)
+
     let url = ` https://api.thecatapi.com/v1/images/${urlParameters}&page=${page}`
-
-    // 9 es la longitud de los ids
+    // 9 is the length of the object ids from the API call
     if (urlParameters.length === 9) url =  ` https://api.thecatapi.com/v1/images/${urlParameters}`
+
     const [info, setInfo] = useState([])
 
-    const loadMoreInfo = () => {
-         setPage(page+1)
-    }
-
-    useEffect(() => {
+    const loadInfo = () => {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                // todo --> implementar que no se repitan
-                setInfo((oldInfo) =>  [...oldInfo, ...data])
+
+                const combinedInfo = [...info, ...data]
+                const noRepeatedMap = new Map(combinedInfo.map(item => [item.id, item]))
+                setInfo(Array.from((noRepeatedMap).values()))
+
             })
             .catch(error => console.log(error))
-    }, [url, page]);
+    }
 
-    return {info, loadMoreInfo}
+
+    return {info, loadInfo}
 
 }
 

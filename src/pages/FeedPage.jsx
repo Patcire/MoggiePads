@@ -1,20 +1,20 @@
 import useFetch from "../customHooks/useFetch.js";
 import {token} from "../../token.js";
 import Card from "../components/Card.jsx";
-import {useEffect, useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 
 
 const FeedPage = () => {
 
+    const [page, setPage] = useState(0)
     const endPageRef = useRef(null)
-    const { info, loadMoreInfo} = useFetch(`search?limit=10${token}&has_breeds=1`)
-    console.log(info)
+    const { info, loadInfo} = useFetch(`search?limit=10${token}&has_breeds=1`, page)
 
 
     const handleScroll = () => {
 
         if (endPageRef.current && endPageRef.current.getBoundingClientRect().bottom <= window.innerHeight) {
-            loadMoreInfo()
+            setPage(page+1)
         }
 
     }
@@ -24,8 +24,12 @@ const FeedPage = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll)
         }
+    })
 
-    }, [info, handleScroll])
+    useEffect(() => {
+        loadInfo(`search?limit=10${token}&has_breeds=1`, page)
+    }, [page])
+
 
     if (!info || info.length===0) {
         return(
