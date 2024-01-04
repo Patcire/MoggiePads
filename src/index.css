@@ -10,7 +10,9 @@
 
 body{
     font-family: Oxygen;
-    background-color: #f5f8f8;
+   /* background-color: #f5f8f8; */
+    /*  */
+    background: linear-gradient(to right, #fd943b, #ffed9f);
     margin: 2%;
     height: 100%
 }
@@ -278,6 +280,125 @@ main{
 
 
 
+/* LandPage */
+
+.section--landpage{
+    margin: 2%;
+    display: flex;
+
+
+}
+
+.article-login{
+    display: inline-block;
+    margin-left: 8%;
+}
+
+.section__h1--landpage{
+    font-family: Nabla;
+    font-size: 800%;
+    width: 65%;
+
+}
+
+.section__h1--landpage--v2{
+    margin-left: 0.4%;
+    font-size: xxx-large;
+    font-weight: bold;
+    display: block;
+
+}
+
+
+.section__p--landpage2{
+
+    font-size: xx-large;
+    width: 60%;
+    text-align: left;
+    margin-left: 0.4%;
+
+
+}
+
+
+.img--landpage{
+
+    margin-top: 5%;
+    height: 200px;
+    transition: transform 0.3s ease-in-out;
+    opacity: 90%;
+    position: absolute;
+    box-shadow: #333333;
+    margin-left: 0.4%;
+    overflow: hidden
+
+}
+
+
+.img--landpage:hover{
+    transform: scale(1.1);
+    opacity: 100%;
+
+}
+
+.article-login2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+
+}
+
+
+.img--landpage--v2{
+    width: 600px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 5%;
+    margin-top: 7%;
+
+}
+
+.primary-button--v2{
+    padding: 10px;
+    border: 2px solid #fd943b;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: xx-large;
+    cursor:pointer;
+    display: block;
+    margin-left: 39%;
+}
+
+.primary-button--v2:hover{
+    background: linear-gradient(to right, #fd943b, #ffed9f);
+    font-weight: bold;
+    border-color: #333333;
+    border: 3px solid;
+}
+
+
+.primary-button--v3{
+    padding: 10px;
+    border: 4px solid #fd943b;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: xx-large;
+    cursor:pointer;
+    display: block;
+    margin-left: 25%;
+}
+
+.primary-button--v3:hover{
+    background: linear-gradient(to right, #fd943b, #ffed9f);
+    font-weight: bold;
+    border-color: #333333;
+    border: 5px solid;
+}
+
+
+/*----------*/
 /*----------*/
 
 /* Primary Button */
