@@ -8,7 +8,7 @@ const FeedPage = () => {
 
     const [page, setPage] = useState(0)
     const endPageRef = useRef(null)
-    const { info, loadInfo} = useFetch(`search?limit=10${token}&has_breeds=1`, page)
+    const { info, loadInfo} = useFetch(`search?limit=16${token}&has_breeds=1`, page)
 
 
     const handleScroll = () => {
