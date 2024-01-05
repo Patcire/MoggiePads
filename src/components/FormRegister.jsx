@@ -24,8 +24,6 @@ const FormRegister = () => {
             <input type={"text"} placeholder={"Escriba sus apellidos"} name={"lastname"}
                    className={"form__input"}></input>
 
-            <input type={"date"} name={"bdate"} className={"form__input--date"}></input>
-
             <input type={"text"} placeholder={"Escriba su correo"} name={"email"}
                    className={"form__input"}></input>
 
