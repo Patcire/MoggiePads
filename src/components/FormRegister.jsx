@@ -9,7 +9,7 @@ const FormRegister = () => {
 
     const register = () => {
         setUser(true)
-        navigate("/")
+        navigate("/feed")
 
     }
 
