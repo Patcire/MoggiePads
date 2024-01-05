@@ -2,7 +2,7 @@ import {useState} from "react";
 
 const useSinglePhoto = () =>{
 
-    const [photo, setPhoto] = useState("")
+    const [photo, setPhoto] = useState("https://cdn2.thecatapi.com/images/dkh.jpg")
 
     const loadOnePhoto = () => {
         fetch("https://api.thecatapi.com/v1/images/search")
