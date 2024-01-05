@@ -31,7 +31,13 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/feed",
-                element: < FeedPage />,
+                element: < LayoutPrivate />,
+                children: [
+                    {
+                        index: true,
+                        element: <FeedPage></FeedPage>
+                    }
+                ]
             },
             {
                 path: "/profile",

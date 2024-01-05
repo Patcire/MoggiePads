@@ -8,7 +8,7 @@ const FormLogin = () => {
     const navigate = useNavigate()
     const logIn = () => {
         setUser(true)
-        navigate("/")
+        navigate("/feed")
 
     }
 

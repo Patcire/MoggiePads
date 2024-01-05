@@ -33,7 +33,6 @@ const Navbar = () => {
                         <nav className={"header-navbar"}>
                             <NavLink to={"/"}>Inicio</NavLink>
                             <NavLink to={"/login"}>Login/Registro</NavLink>
-                            <NavLink to={"/feed"}>Feed</NavLink>
                             <NavLink to={"/anecdotes"}>Anecdotas</NavLink>
                             <NavLink to={"/contact"}>Contacto</NavLink>
 
