@@ -258,6 +258,7 @@ main{
     justify-content: center;
 }
 
+
 .h3-custom {
     font-weight: bolder;
     font-size: x-large;
@@ -290,13 +291,11 @@ main{
 .section--landpage{
     margin: 2%;
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
 
 
-}
-
-.article-login{
-    display: inline-block;
-    margin-left: 8%;
 }
 
 .section__h1--landpage{
@@ -307,12 +306,33 @@ main{
 }
 
 .section__h1--landpage--v2{
-    margin-left: 0.4%;
+
     font-size: xxx-large;
     font-weight: bold;
-    display: block;
+    display: flex;
+
+    justify-content: left;
 
 }
+
+
+
+.article--landpage{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.article--landpage2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-right:7%;
+
+}
+
 
 
 .section__p--landpage2{
@@ -328,14 +348,17 @@ main{
 
 .img--landpage{
 
-    margin-top: 5%;
+
     height: 200px;
     transition: transform 0.3s ease-in-out;
-    opacity: 90%;
-    position: absolute;
+    opacity: 100%;
     box-shadow: #333333;
-    margin-left: 0.4%;
-    overflow: hidden
+    margin-left: 7%;
+    vertical-align: bottom;
+    bottom: 0;
+    z-index: 1;
+
+
 
 }
 
@@ -346,14 +369,6 @@ main{
 
 }
 
-.article-login2 {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-
-
-}
 
 
 .img--landpage--v2{
@@ -365,15 +380,27 @@ main{
 
 }
 
+.buttons-container{
+    margin-top: 1%;
+    display: flex;
+    justify-content: right;
+    gap: 2%;
+    width: 100%;
+}
+
+
 .primary-button--v2{
+    margin-top: 2%;
+    margin-left: 20%;
     padding: 10px;
     border: 2px solid #fd943b;
     border-radius: 10px;
     margin-bottom: 10px;
     font-size: xx-large;
     cursor:pointer;
-    display: block;
-    margin-left: 39%;
+    background: linear-gradient(to right, #fd943b, #ffed9f);
+
+
 }
 
 .primary-button--v2:hover{
@@ -391,8 +418,9 @@ main{
     margin-bottom: 10px;
     font-size: xx-large;
     cursor:pointer;
-    display: block;
-    margin-left: 25%;
+    background: linear-gradient(to right, #fd943b, #ffed9f);
+
+
 }
 
 .primary-button--v3:hover{

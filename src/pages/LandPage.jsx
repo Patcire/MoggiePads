@@ -10,7 +10,7 @@ const LandPage = () => {
     return(
         <section className={"section--landpage"}>
 
-            <article className={"article-login"}>
+            <article className={"article--landpage"}>
                 <h1 className={"section__h1--landpage"}> M o g g i e P a d s</h1>
 
                 <h1 className={"section__h1--landpage--v2"}>La mejor web de gatos</h1>
@@ -20,20 +20,25 @@ const LandPage = () => {
 
                 </p>
 
-                <img alt={"cat with sport clothes"}
-                     src={"resources/jack-dong-yJozLVBxNA0-unsplash-mod-removebg-preview.png"}
-                     className={"img--landpage"}></img>
             </article>
 
 
-            <article className={"article--login2"}>
+            <article className={"article--landpage2"}>
 
                 <img alt={"cat photo"} src={photo}
                      className={"img--landpage--v2"}></img>
-                <button className={"primary-button--v2"} onClick={loadOnePhoto}>New cat</button>
-                <button className={"primary-button--v3"}  onClick={() =>navigate("/register")}>REGISTER NOW!!!</button>
+                <article className={"buttons-container"}>
+                    <button className={"primary-button--v2"} onClick={loadOnePhoto}>New cat</button>
+                    <button className={"primary-button--v3"} onClick={() => navigate("/register")}>REGISTER NOW!!!
+                    </button>
+                </article>
 
             </article>
+
+            <img alt={"cat with sport clothes"}
+                 src={"resources/jack-dong-yJozLVBxNA0-unsplash-mod-removebg-preview.png"}
+                 className={"img--landpage"}></img>
+
         </section>
 
 
