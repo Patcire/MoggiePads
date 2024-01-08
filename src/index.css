@@ -432,6 +432,33 @@ main{
 
 
 /*----------*/
+
+/* Errors */
+
+.error__p{
+    color: white;
+    font-weight: bold;
+    background-color: rgba(255, 0, 0, 0.54);
+    margin-bottom: 1%;
+    width: 60%;
+    text-align: center;
+
+}
+
+.modal-error{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    max-width: 300px;
+    text-align: center;
+    z-index: 1000;
+}
+
+/*----------*/
 /*----------*/
 
 /* Primary Button */
