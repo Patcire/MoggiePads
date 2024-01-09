@@ -1,6 +1,8 @@
+import FormContact from "../components/FormContact.jsx";
+
 const ContactPage = () => {
     return(
-        <h1>Quejas, sugerencias etc</h1>
+        <FormContact></FormContact>
     )
 }
 

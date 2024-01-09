@@ -31,6 +31,14 @@ export const validatePassword = (pwd) => {
 
 }
 
+
+export const validateDate = (date) => {
+    const year = date.split("-")[0]
+    console.log(year)
+
+    return year<2014 && year>1914
+
+}
 export const showModalError = (icon, title, text) =>{
     Swal.fire({
         icon: icon,
