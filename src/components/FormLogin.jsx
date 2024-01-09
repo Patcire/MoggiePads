@@ -2,6 +2,7 @@ import {useContext, useState} from "react";
 import {UserContext} from "/src/context/UserContext.jsx";
 import {useNavigate} from "react-router-dom";
 import {showModalError, validateEmails, validatePassword} from "/src/functions/Validations.js"
+import {checkUser} from "../functions/localStorage.js";
 
 const FormLogin = () => {
 
@@ -61,7 +62,8 @@ const FormLogin = () => {
             showModalError("error", "Ooops", "There is an error in the form, fix it!")
             return
         }
-        setUser(true)
+        checkUser(infoUser) ? setUser(true) : showModalError("error", "User and Password doesn't match",
+            "Check your data!")
         navigate("/feed")
 
     }

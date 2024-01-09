@@ -25,3 +25,11 @@ export const saveUserInLocalStorage = (key, user) => {
     localStorage.setItem('users', JSON.stringify(storage))
     return true
 }
+
+export const checkUser = (user) =>{
+
+    const localStorage =  getLocalStorage("users")
+
+   return localStorage.some(element => element.email === user.email && element.password === user.password)
+
+}
