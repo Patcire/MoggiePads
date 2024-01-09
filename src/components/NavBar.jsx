@@ -20,7 +20,7 @@ const Navbar = () => {
 
                 user ?
                     (
-                        <nav className={"header-navbar"}>
+                        <nav className={"header__navbar"}>
                             <NavLink to={"/"}>Inicio</NavLink>
                             <NavLink to={"/profile"}>MiPerfil</NavLink>
                             <NavLink to={"/feed"}>Feed</NavLink>
@@ -30,7 +30,7 @@ const Navbar = () => {
                         </nav>
 
                     ) : (
-                        <nav className={"header-navbar"}>
+                        <nav className={"header__navbar"}>
                             <NavLink to={"/"}>Inicio</NavLink>
                             <NavLink to={"/login"}>Login/Registro</NavLink>
                             <NavLink to={"/anecdotes"}>Anecdotas</NavLink>

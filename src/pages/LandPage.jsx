@@ -1,5 +1,4 @@
 import useSinglePhoto from "../customHooks/useSinglePhoto.js";
-import {useEffect} from "react";
 import {useNavigate} from "react-router-dom";
 
 const LandPage = () => {
@@ -8,13 +7,13 @@ const LandPage = () => {
     const navigate = useNavigate()
 
     return(
-        <section className={"section--landpage"}>
+        <section className={"landpage"}>
 
-            <article className={"article--landpage"}>
-                <h1 className={"section__h1--landpage"}> M o g g i e P a d s</h1>
+            <article className={"landpage__article"}>
+                <h1 className={"landpage__article__h1"}> M o g g i e P a d s</h1>
 
-                <h1 className={"section__h1--landpage--v2"}>La mejor web de gatos</h1>
-                <p className={"section__p--landpage2"}>
+                <h1 className={"landpage__article__h1--v2"}>La mejor web de gatos</h1>
+                <p className={"landpage__article__p"}>
                     ¡Miles de fotos,
                     anécdotas, curiosidades y poco más!
 
@@ -23,13 +22,13 @@ const LandPage = () => {
             </article>
 
 
-            <article className={"article--landpage2"}>
+            <article className={"landpage__article--v2"}>
 
                 <img alt={"cat photo"} src={photo}
-                     className={"img--landpage--v2"}></img>
-                <article className={"buttons-container"}>
+                     className={"landpage__article__img"}></img>
+                <article className={"landpage__article__buttons-container"}>
                     <button className={"primary-button--v2"} onClick={loadOnePhoto}>New cat</button>
-                    <button className={"primary-button--v3"} onClick={() => navigate("/register")}>REGISTER NOW!!!
+                    <button className={"primary-button--v3"} onClick={() => navigate("/register")}>Register now!!!
                     </button>
                 </article>
 
@@ -37,7 +36,7 @@ const LandPage = () => {
 
             <img alt={"cat with sport clothes"}
                  src={"resources/jack-dong-yJozLVBxNA0-unsplash-mod-removebg-preview.png"}
-                 className={"img--landpage"}></img>
+                 className={"landpage__article__img--detail"}></img>
 
         </section>
 
