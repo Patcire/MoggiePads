@@ -57,7 +57,7 @@ const FormRegister = () => {
         if (e.target.name === "name") {
             setError({
                 ...error,
-                nameError: !validateStrings(e.target.value) ? "Este campo no puede tener menos de 4 caracteres" : ""
+                nameError: !validateStrings(e.target.value) ? "Este campo no puede tener menos de 4 caracteres ni numeros" : ""
             })
         }
 
@@ -83,7 +83,6 @@ const FormRegister = () => {
             return
         }
 
-        console.log(user)
         if (saveUserInLocalStorage("users", infoUser)){
             showModalError("success", "Now you are register!", "enjoy!")
             setUser(true)
@@ -91,7 +90,7 @@ const FormRegister = () => {
             return
         }
 
-        showModalError("error", "User exist", "TYou mus register with another email!")
+        showModalError("error", "User already exist", "You must register with another email!")
 
 
 

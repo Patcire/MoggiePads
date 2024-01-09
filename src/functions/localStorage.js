@@ -18,12 +18,10 @@ export const saveUserInLocalStorage = (key, user) => {
         storage= []
     }
 
-    const existed = storage.includes(element => element.email === user.email)
+    const exist = storage.some(element => element.email === user.email)
 
-    if (existed) return false
+    if (exist) return false
     storage.push(user)
-    console.log(user)
-    console.log(storage)
     localStorage.setItem('users', JSON.stringify(storage))
     return true
 }
