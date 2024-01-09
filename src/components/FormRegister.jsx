@@ -2,6 +2,7 @@ import {useContext, useState} from "react";
 import {UserContext} from "../context/UserContext.jsx";
 import {useNavigate} from "react-router-dom";
 import {showModalError, validateEmails, validatePassword, validateStrings} from "../functions/Validations.js";
+import {saveUserInLocalStorage} from "../functions/localStorage.js";
 
 const FormRegister = () => {
 
@@ -81,8 +82,18 @@ const FormRegister = () => {
             showModalError("error", "Ooops", "There is an error in the form, fix it!")
             return
         }
-        setUser(true)
-        navigate("/feed")
+
+        console.log(user)
+        if (saveUserInLocalStorage("users", infoUser)){
+            showModalError("success", "Now you are register!", "enjoy!")
+            setUser(true)
+            navigate("/feed")
+            return
+        }
+
+        showModalError("error", "User exist", "TYou mus register with another email!")
+
+
 
     }
 
