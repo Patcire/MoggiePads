@@ -47,7 +47,10 @@ export const saveFav = (cat, email) =>{
     const storage = getLocalStorage("users")
     const userInfo = getUserInSession(email)
 
-    userInfo.favs.push(cat)
+    if (!userInfo.favs.some((element) => element.id === cat.id)){
+        userInfo.favs.push(cat)
+    }
+
 
     storage.forEach((element) => {
         if (element.email === email)  element.favs = userInfo.favs
