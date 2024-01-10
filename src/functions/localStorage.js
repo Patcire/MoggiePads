@@ -6,7 +6,7 @@ export const getLocalStorage = (key) =>{
         storage = []
     }
 
-    storage =JSON.parse(localStorage.getItem(key))
+    storage = JSON.parse(localStorage.getItem(key))
 
     return storage
 }
@@ -31,5 +31,15 @@ export const checkUser = (user) =>{
     const localStorage =  getLocalStorage("users")
 
    return localStorage.some(element => element.email === user.email && element.password === user.password)
+
+}
+
+export const getUserInSession = (email) =>{
+
+    const localStorage = getLocalStorage("users")
+
+    return  localStorage.find((element) => element.email === email)
+
+
 
 }

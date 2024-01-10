@@ -12,7 +12,8 @@ const FormRegister = () => {
         name:"",
         lastname:"",
         email:"",
-        password:""
+        password:"",
+        favs:[]
     })
 
     const [error, setError] = useState({
@@ -85,7 +86,10 @@ const FormRegister = () => {
 
         if (saveUserInLocalStorage("users", infoUser)){
             showModalError("success", "Now you are register!", "enjoy!")
-            setUser(true)
+            setUser({
+                connected: true,
+                email: infoUser.email
+            })
             navigate("/feed")
             return
         }

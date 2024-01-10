@@ -62,8 +62,17 @@ const FormLogin = () => {
             showModalError("error", "Ooops", "There is an error in the form, fix it!")
             return
         }
-        checkUser(infoUser) ? setUser(true) : showModalError("error", "User and Password doesn't match",
+        checkUser(infoUser) ?
+            setUser({
+
+                connected: true,
+                email: infoUser.email
+
+            })
+            :
+            showModalError("error", "User and Password doesn't match",
             "Check your data!")
+
         navigate("/feed")
 
     }
