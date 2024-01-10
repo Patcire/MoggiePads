@@ -2,7 +2,7 @@ export const getLocalStorage = (key) =>{
 
     let storage = localStorage.getItem(key)
 
-    if (localStorage.getItem(key) === null){
+    if ( storage=== null){
         storage = []
     }
 
@@ -40,6 +40,19 @@ export const getUserInSession = (email) =>{
 
     return  localStorage.find((element) => element.email === email)
 
+}
 
+export const saveFav = (cat, email) =>{
+
+    const storage = getLocalStorage("users")
+    const userInfo = getUserInSession(email)
+
+    userInfo.favs.push(cat)
+
+    storage.forEach((element) => {
+        if (element.email === email)  element.favs = userInfo.favs
+    })
+
+    localStorage.setItem('users', JSON.stringify(storage))
 
 }
