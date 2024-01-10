@@ -9,11 +9,12 @@ const FeedPage = () => {
     const [page, setPage] = useState(0)
     const endPageRef = useRef(null)
     const { info, loadInfo} = useFetch(`search?limit=16${token}&has_breeds=1`, page)
-
+    let scrollPosition = window.scrollY
 
     const handleScroll = () => {
 
-        if (endPageRef.current && endPageRef.current.getBoundingClientRect().bottom <= window.innerHeight+ 500) {
+        console.log(scrollPosition)
+        if (endPageRef.current && endPageRef.current.getBoundingClientRect().bottom <= window.innerHeight+ 800) {
             setPage(page+1)
         }
 
@@ -37,6 +38,15 @@ const FeedPage = () => {
         )
     }
 
+    const goToTop = () => {
+        window.scroll({
+            top:0,
+            behavior:"smooth"
+        })
+
+    }
+
+
     return(
         <>
         <section className={"cards"}>
@@ -46,6 +56,9 @@ const FeedPage = () => {
                 ))
             }
         </section>
+        {window.scrollY > 200 && (
+            <button className={"scrollbut"} onClick={goToTop} >Volver</button>
+        )}
         <div className={"endPageRef"} ref={endPageRef}></div>
         </>
     )
