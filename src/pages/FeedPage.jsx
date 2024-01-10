@@ -13,7 +13,7 @@ const FeedPage = () => {
 
     const handleScroll = () => {
 
-        if (endPageRef.current && endPageRef.current.getBoundingClientRect().bottom <= window.innerHeight) {
+        if (endPageRef.current && endPageRef.current.getBoundingClientRect().bottom <= window.innerHeight+ 500) {
             setPage(page+1)
         }
 
