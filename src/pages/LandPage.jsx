@@ -25,16 +25,15 @@ const LandPage = () => {
             <article className={"landpage__article--v2"}>
 
                 <img alt={"cat photo"} src={photo}
-                     className={"landpage__article__img"}></img>
+                     className={"landpage__article__img"} onClick={loadOnePhoto}></img>
                 <article className={"landpage__article__buttons-container"}>
-                    <button className={"primary-button--v2"} onClick={loadOnePhoto}>New cat</button>
                     <button className={"primary-button--v3"} onClick={() => navigate("/register")}>Register now!!!
                     </button>
                 </article>
 
             </article>
 
-            <img alt={"cat with sport clothes"}
+            <img alt={"cat ears"}
                  src={"resources/jack-dong-yJozLVBxNA0-unsplash-mod-removebg-preview.png"}
                  className={"landpage__article__img--detail"}></img>
 
