@@ -173,22 +173,10 @@ main{
     border: none;
     cursor: pointer;
     outline: none;
+    padding-top: 2%;
+    padding-bottom: 2%;
 }
 
-.heart {
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background-color: #d0829c;
-    clip-path: polygon(
-            50% 15%, 60% 5%,
-            75% 15%, 75% 30%,
-            50% 50%, 25% 30%,
-            25% 15%, 40% 5%
-    );
-
-
-}
 
 .like-button:hover{
     transform: scale(2);

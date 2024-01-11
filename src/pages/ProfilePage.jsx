@@ -5,7 +5,7 @@ import Card from "../components/Card.jsx";
 
 const ProfilePage = () => {
 
-    const {user, setUser} = useContext(UserContext)
+    const {user} = useContext(UserContext)
     const infoUser = getUserInSession(user.email)
     console.log(user)
     console.log(user.email)
@@ -29,7 +29,7 @@ const ProfilePage = () => {
            <article className={"profile__favs"}>
                {
                    (infoUser.favs.length) ?
-                       infoUser.favs.map(cat => <Card key={cat.id} cat={cat} loading="lazy"></Card>)
+                       infoUser.favs.map(cat => <Card key={cat.id} cat={cat} loading="lazy" alreadyFav={true}></Card>)
                        :
                        <article className={"profile__favs__nofavs"}>
                            <h1 className={"profile__favs__h1"}>Todavía no tienes favoritos :(</h1>

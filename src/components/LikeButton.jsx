@@ -1,17 +1,32 @@
-import {getUserInSession, saveFav} from "../functions/localStorage.js";
-import {useContext} from "react";
+import {deleteFav, saveFav} from "../functions/localStorage.js";
+import {useContext, useState} from "react";
 import {UserContext} from "../context/UserContext.jsx";
+import { IoMdHeart } from "react-icons/io";
+import { CiHeart } from "react-icons/ci";
 
-const LikeButton = ({cat}) => {
+const LikeButton = ({cat, alreadyFav}) => {
 
-    const {user, setUser} = useContext(UserContext)
+    const {user} = useContext(UserContext)
+
+    const [icon, setIcon] = useState(!!alreadyFav)
+
     const handleClick = () => {
-        saveFav(cat, user.email)
+        if (!icon) {
+            saveFav(cat, user.email)
+            setIcon(!icon)
+            return
+        }
+
+        deleteFav(cat, user.email)
+        setIcon(!icon)
     }
+
 
     return (
         <button className={"like-button"} onClick={handleClick}>
-            <span className={"heart"}></span>
+            {
+                icon ?  <IoMdHeart color="da376d" size={30}></IoMdHeart> : <CiHeart size={20}></CiHeart>
+            }
         </button>
     )
 }

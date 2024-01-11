@@ -59,3 +59,21 @@ export const saveFav = (cat, email) =>{
     localStorage.setItem('users', JSON.stringify(storage))
 
 }
+
+export const deleteFav = (cat, email) =>{
+
+    const storage = getLocalStorage("users")
+    const userInfo = getUserInSession(email)
+
+    const updatedFavs = userInfo.favs.filter((element) => element.id !== cat.id)
+    console.log(updatedFavs)
+    storage.forEach((element) => {
+        if (element.email === email)  element.favs = updatedFavs
+    })
+
+    localStorage.setItem('users', JSON.stringify(storage))
+
+
+
+
+}

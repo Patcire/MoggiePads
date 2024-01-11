@@ -55,7 +55,7 @@ const FeedPage = () => {
             {
                 info?.map((cat) => (
 
-                   <Card key={cat.id} cat={cat} loading="lazy"></Card>
+                   <Card key={cat.id} cat={cat} loading="lazy" alreadyFav={false}></Card>
                 ))
             }
         </section>
