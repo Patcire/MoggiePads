@@ -1,27 +1,27 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
-const useFetch = (urlParameters, page) => {
-
-
-    let url = ` https://api.thecatapi.com/v1/images/${urlParameters}&page=${page}`
+const useFetch = (url) => {
 
     const [info, setInfo] = useState([])
 
-    const loadInfo = () => {
+    useEffect(() => {
+
         fetch(url)
             .then(response => response.json())
             .then(data => {
 
-                const combinedInfo = [...info, ...data]
+                const filteredData = data.filter(cat => cat !== null && cat !== undefined && cat.breeds && cat.breeds.length > 0)
+                const combinedInfo = [...info, ...filteredData]
                 const noRepeatedMap = new Map(combinedInfo.map(item => [item.id, item]))
-                setInfo(Array.from((noRepeatedMap).values()))
+                setInfo([...noRepeatedMap.values()])
+                console.log(info)
 
             })
             .catch(error => console.log(error))
-    }
 
+    }, [url])
 
-    return {info, loadInfo}
+    return {info}
 
 }
 
