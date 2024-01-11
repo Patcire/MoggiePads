@@ -4,8 +4,6 @@ const useFetch = (urlParameters, page) => {
 
 
     let url = ` https://api.thecatapi.com/v1/images/${urlParameters}&page=${page}`
-    // 9 is the length of the object ids from the API call
-    //if (urlParameters.length === 9) url =  ` https://api.thecatapi.com/v1/images/${urlParameters}`
 
     const [info, setInfo] = useState([])
 

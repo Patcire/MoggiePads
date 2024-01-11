@@ -30,7 +30,7 @@ const FeedPage = () => {
     })
 
     useEffect(() => {
-        loadInfo(`search?limit=10${token}&has_breeds=1`, page)
+        loadInfo()
     }, [page])
 
 
