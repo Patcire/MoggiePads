@@ -2,6 +2,8 @@ import useFetch from "../customHooks/useFetch.js";
 import {token} from "../../token.js";
 import Card from "../components/Card.jsx";
 import {useEffect, useRef, useState} from "react";
+import SearchBar from "../components/SearchBar.jsx";
+import Filters from "../components/Filters.jsx";
 
 
 const FeedPage = () => {
@@ -49,6 +51,8 @@ const FeedPage = () => {
 
     return(
         <>
+        <SearchBar></SearchBar>
+        <Filters></Filters>
         <section className={"cards"}>
             {
                 info?.map((cat) => (
