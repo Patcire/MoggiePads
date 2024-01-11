@@ -14,7 +14,7 @@ const FeedPage = () => {
     const handleScroll = () => {
 
         console.log(scrollPosition)
-        if (endPageRef.current && endPageRef.current.getBoundingClientRect().bottom <= window.innerHeight+ 800) {
+        if (endPageRef.current && endPageRef.current.getBoundingClientRect().bottom <= window.innerHeight+ 1500) {
             setPage(page+1)
         }
 
