@@ -1,5 +1,5 @@
 
-const Filters = () => {
+const Filters = ({handleFiltersClick}) => {
 
 
 
@@ -9,7 +9,7 @@ const Filters = () => {
                 <h3>Raza</h3>
                 <ul>
                     <li>
-                        <button>Bengalí</button>
+                        <button onClick={()=> handleFiltersClick("beng")}>Bengalí</button>
                         <button>Himalayian</button>
                         <button>Siberian</button>
                     </li>
