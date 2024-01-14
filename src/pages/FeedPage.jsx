@@ -80,7 +80,7 @@ const FeedPage = () => {
         correspondentBreedId !== null ?
             handleFilter(correspondentBreedId)
             :
-            showModalError("error", "Raza no encontrada :(", "Prueba con alguna de las mostradas en los filtros")
+            showModalError("error", "Raza no encontrada :(", "Prueba con alguna de las mostradas en los filtros\n (no uses acentos)")
     }
 
 

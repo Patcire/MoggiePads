@@ -15,7 +15,7 @@ const termsMap = new Map ([
     ["bengali", "&breed_ids=beng"],
     ["persa", "&breed_ids=pers"],
     ["esfinge", "&breed_ids=sphy"],
-    ["abisano", "&breed_ids=abys"],
+    ["abisino", "&breed_ids=abys"],
     ["siames", "&breed_ids=siam"],
     ["balines", "&breed_ids=bali"],
     ["birmano", "&breed_ids=birm"],
@@ -27,6 +27,6 @@ const termsMap = new Map ([
 
 export const findBreed = (breed) =>{
     console.log(breed)
-    return  termsMap.get(breed.toLowerCase())
+    return  termsMap.get(breed.toLowerCase()) || null
 
 }

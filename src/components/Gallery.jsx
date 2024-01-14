@@ -1,19 +1,6 @@
 import Card from "./Card.jsx";
 import {goToTop} from "../functions/scroll.js";
-import SearchBar from "./SearchBar.jsx";
-import {useState} from "react";
-import {
-    abobUrl,
-    abysUrl,
-    baliUrl,
-    bengUrl,
-    birmUrl,
-    findBreed,
-    persUrl,
-    siamUrl,
-    sphyUrl
-} from "../functions/breedInfo.js";
-import {showModalError} from "../functions/Validations.js";
+import {abobUrl, abysUrl, baliUrl, bengUrl, birmUrl, persUrl, siamUrl, sphyUrl} from "../functions/breedInfo.js";
 
 
 const Gallery = ({info, alreadyFav, handleFilter, handleInput, handleClick}) => {
@@ -53,7 +40,7 @@ const Gallery = ({info, alreadyFav, handleFilter, handleInput, handleClick}) => 
                             <button onClick={() => handleFilter(abysUrl)}>Abisino</button>
                             <button onClick={() => handleFilter(persUrl)}>Persa</button>
                             <button onClick={() => handleFilter(siamUrl)}>Siamés</button>
-                            <button onClick={() => handleFilter(abobUrl)}>Bobtail Americano</button>
+                            <button onClick={() => handleFilter(abobUrl)}>Americano</button>
                             <button onClick={() => handleFilter(baliUrl)}>Balinés</button>
                             <button onClick={() => handleFilter(birmUrl)}>Birmano</button>
                             <button onClick={() => handleFilter(sphyUrl)}>Esfinge</button>
