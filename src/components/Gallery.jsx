@@ -2,24 +2,43 @@ import Card from "./Card.jsx";
 import {goToTop} from "../functions/scroll.js";
 import SearchBar from "./SearchBar.jsx";
 import {useState} from "react";
+import {
+    abobUrl,
+    abysUrl,
+    baliUrl,
+    bengUrl,
+    birmUrl,
+    findBreed,
+    persUrl,
+    siamUrl,
+    sphyUrl
+} from "../functions/breedInfo.js";
+import {showModalError} from "../functions/Validations.js";
 
 
 const Gallery = ({info, alreadyFav, handleFilter}) => {
 
-    const bengUrl = `&breed_ids=beng`
-    const abysUrl = `&breed_ids=abys`
-    const persUrl = `&breed_ids=pers`
-    const siamUrl = `&breed_ids=siam`
-    const abobUrl = `&breed_ids=abob`
-    const baliUrl = `&breed_ids=bali`
-    const birmUrl = `&breed_ids=birm`
-    const sphyUrl = `&breed_ids=sphy`
+
 
     const [searchTerm, setSearchTerm] = useState("")
     const handleInput = (e) => {
         console.log(e.target.value)
         e.preventDefault()
         setSearchTerm(e.target.value)
+        console.log(searchTerm)
+    }
+
+    const handleClick = (e) => {
+        e.preventDefault()
+        console.log("searchTerm:", searchTerm)
+        console.log("findBreed result:", findBreed(searchTerm))
+
+        const correspondentBreedId = findBreed(searchTerm)
+        console.log(correspondentBreedId)
+        correspondentBreedId !== null ?
+            handleFilter(correspondentBreedId)
+            :
+            showModalError("error", "Raza no encontrada :(", "Prueba con alguna de las mostradas en los filtros")
     }
 
     return (
@@ -39,7 +58,7 @@ const Gallery = ({info, alreadyFav, handleFilter}) => {
                 <button
                     type={"submit"}
                     className={"primary-button--v3"}
-                    onClick={() => handleFilter(`&breed_ids=${searchTerm}`)}
+                    onClick={handleClick}
                 >
                     Buscar
                 </button>
