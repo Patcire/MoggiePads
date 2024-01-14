@@ -468,6 +468,7 @@ input[type="checkbox"]{
     bottom: 0;
     left: 0;
     border-radius: 0;
+    display: block;
 
 
 
@@ -479,6 +480,27 @@ input[type="checkbox"]{
     opacity: 100%;
 
 }
+
+.toast{
+
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    display: block;
+    background-color: #333;
+    color: #fff;
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease-in-out;
+}
+
+.toast:hover{
+    cursor: pointer;
+}
+
+
+/*-----------*/
 
 /* Profile */
 

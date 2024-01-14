@@ -1,10 +1,21 @@
 import useSinglePhoto from "../customHooks/useSinglePhoto.js";
 import {useNavigate} from "react-router-dom";
+import Toast from "../components/Toast.jsx";
+import {useEffect, useState} from "react";
 
 const LandPage = () => {
 
     const {photo, loadOnePhoto} = useSinglePhoto()
+    const [show, setShow]  = useState(true)
     const navigate = useNavigate()
+
+
+    setTimeout(()=> {
+    setShow(false)
+     console.log(show)
+    }, 10000)
+
+
 
     return(
         <section className={"landpage"}>
@@ -32,10 +43,11 @@ const LandPage = () => {
                 </article>
 
             </article>
-
+            {show && <Toast message={" ¡Registrate para más diversión :) !"}></Toast>}
             <img alt={"cat ears"}
                  src={"resources/jack-dong-yJozLVBxNA0-unsplash-mod-removebg-preview.png"}
                  className={"landpage__article__img--detail"}></img>
+
 
         </section>
 
