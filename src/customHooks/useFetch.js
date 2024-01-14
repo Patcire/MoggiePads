@@ -21,7 +21,7 @@ const useFetch = (url) => {
 
     }, [url])
 
-    return {info}
+    return {info, setInfo}
 
 }
 

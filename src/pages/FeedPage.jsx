@@ -1,24 +1,32 @@
-import useFetch from "../customHooks/useFetch.js";
-import Card from "../components/Card.jsx";
+
 import {useEffect, useRef, useState} from "react";
 import SearchBar from "../components/SearchBar.jsx";
-import Filters from "../components/Filters.jsx";
 
+import Gallery from "../components/Gallery.jsx";
 import {token} from "../../token.js";
 
 
 const FeedPage = () => {
 
+
     const [page, setPage] = useState(0)
+    const [url, setUrl] = useState(`https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&page=${page}`)
     const endPageRef = useRef(null)
-    const { info} = useFetch(`https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&page=${page}`)
+    //const [info, setInfo]= useState()
+    const [info, setInfo] = useState([])
     let scrollPosition = window.scrollY
 
     const handleScroll = () => {
 
         console.log(scrollPosition)
         if (endPageRef.current && endPageRef.current.getBoundingClientRect().bottom <= window.innerHeight+ 1500) {
-            setPage(page+1)
+            //setPage(prevState => prevState+1)
+
+            setPage(prevPage => {
+                const newPage = prevPage + 1;
+                setUrl(`https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&page=${newPage}`);
+                return newPage;
+            })
         }
 
     }
@@ -30,6 +38,20 @@ const FeedPage = () => {
         }
     })
 
+    useEffect(() => {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+
+                const filteredData = data.filter(cat => cat !== null && cat !== undefined && cat.breeds && cat.breeds.length > 0)
+                const combinedInfo = [...info, ...filteredData]
+                const noRepeatedMap = new Map(combinedInfo.map(item => [item.id, item]))
+                setInfo([...noRepeatedMap.values()])
+                console.log(info)
+
+            })
+            .catch(error => console.log(error))
+    }, [url, page]);
 
 
     if (!info || info.length===0) {
@@ -38,11 +60,11 @@ const FeedPage = () => {
         )
     }
 
-    const goToTop = () => {
-        window.scroll({
-            top:0,
-            behavior:"smooth"
-        })
+    const handleFilter = (newUrl) =>{
+        console.log('clicl')
+        setPage(0)
+        setInfo([])
+        setUrl(newUrl)
 
     }
 
@@ -50,18 +72,7 @@ const FeedPage = () => {
     return(
         <>
         <SearchBar></SearchBar>
-        <Filters></Filters>
-        <section className={"cards"}>
-            {
-                info?.map((cat) => (
-
-                   <Card key={cat.id} cat={cat} loading="lazy" alreadyFav={false}></Card>
-                ))
-            }
-        </section>
-        {window.scrollY > 200 && (
-            <button className={"scrollbut"} onClick={goToTop} >Volver</button>
-        )}
+        <Gallery info={info} alreadyFav={false} handleFilter={handleFilter}></Gallery>
         <div className={"endPageRef"} ref={endPageRef}></div>
         </>
     )
