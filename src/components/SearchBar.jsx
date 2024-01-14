@@ -1,41 +1,43 @@
-import useFetch from "../customHooks/useFetch.js";
-import {token} from "../../token.js";
-import {useState} from "react";
 
-const SearchBar = ({page}) => {
+import {useState} from "react"
 
+const SearchBar = ({handleFilter}) => {
 
-    const [breed, setBreed] = useState("")
-    const handleChange = (e) => {
+    const [searchTerm, setSearchTerm] = useState("")
+
+    const handleInput = (e) => {
+        console.log(e.target.value)
         e.preventDefault()
-        setBreed(e.target.value)
+        setSearchTerm(e.target.value)
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
 
-    const { info, loadInfo} = useFetch(`search?limit=16${token}?breed_ids=${breed}`, page)
-
+        handleFilter(`&breed_ids=${searchTerm}`)
+    }
 
     return (
 
-        <article className={"searchbar"}>
+        <form className={"searchbar"}>
             <input
                 type={"text"}
-                placeholder={"Busca por país..."}
+                placeholder={"Busca por raza..."}
                 className={"searchbar__input"}
                 name={"breed"}
-                onChange={handleChange}
+                onChange={handleInput}
             >
             </input>
 
             <button
                 type={"submit"}
                 className={"primary-button--v3"}
-                onClick={loadInfo}
+                onClick={()=> handleSubmit}
             >
-              Buscar
+                Buscar
             </button>
 
-        </article>
+        </form>
     )
 }
 export default SearchBar

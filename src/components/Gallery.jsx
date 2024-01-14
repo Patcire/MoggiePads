@@ -1,6 +1,8 @@
 import Card from "./Card.jsx";
 import {goToTop} from "../functions/scroll.js";
-import {token} from "../../token.js";
+import SearchBar from "./SearchBar.jsx";
+import {useState} from "react";
+
 
 const Gallery = ({info, alreadyFav, handleFilter}) => {
 
@@ -13,9 +15,36 @@ const Gallery = ({info, alreadyFav, handleFilter}) => {
     const birmUrl = `&breed_ids=birm`
     const sphyUrl = `&breed_ids=sphy`
 
+    const [searchTerm, setSearchTerm] = useState("")
+    const handleInput = (e) => {
+        console.log(e.target.value)
+        e.preventDefault()
+        setSearchTerm(e.target.value)
+    }
 
     return (
         <section className={"gallery"}>
+
+
+            <form className={"searchbar"}>
+                <input
+                    type={"text"}
+                    placeholder={"Busca por raza..."}
+                    className={"searchbar__input"}
+                    name={"breed"}
+                    onChange={handleInput}
+                >
+                </input>
+
+                <button
+                    type={"submit"}
+                    className={"primary-button--v3"}
+                    onClick={() => handleFilter(`&breed_ids=${searchTerm}`)}
+                >
+                    Buscar
+                </button>
+
+            </form>
 
             <section className={"filters"}>
                 <article>

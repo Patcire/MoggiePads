@@ -63,7 +63,7 @@ const FeedPage = () => {
 
     return(
         <>
-        <SearchBar></SearchBar>
+
         <Gallery info={info} alreadyFav={false} handleFilter={handleFilter}></Gallery>
         <div className={"endPageRef"} ref={endPageRef}></div>
         </>
