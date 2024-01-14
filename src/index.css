@@ -12,10 +12,11 @@ body{
     font-family: Oxygen;
    /* background-color: #f5f8f8; */
     /*  */
-    background: linear-gradient(to right, #fd943b, #ffed9f);
+    background-image: linear-gradient(to right, #fda085, #f6d365);
     margin: 2%;
     height: 100%
 }
+
 /*----------*/
 
 /* Header */
@@ -61,7 +62,7 @@ body{
 }
 
 .header__navbar a.active {
-    font-weight: bold; /* Set the bold style for the active link */
+    font-weight: bold;
 }
 
 .header__name{
@@ -153,17 +154,20 @@ main{
 }
 
 .cards__card__info{
-    display: none;
+    display: block;
     opacity: 0;
-    transition: opacity 0.8s ease;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.4s ease-in-out, max-height 0.8s ease;
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 6px;
+
 
 }
 
 .cards__card:hover .cards__card__info {
-    display: block;
     opacity: 1;
+    max-height: 200px;
+    padding: 6px;
 
 }
 
@@ -506,6 +510,13 @@ input[type="checkbox"]{
 
 .profile{
     padding: 3%;
+
+}
+
+.profile__banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .profile__card{
@@ -520,6 +531,7 @@ input[type="checkbox"]{
     border-radius: 50px;
     box-shadow: 5px 5px 5px rgba(51, 51, 51, 0.55);
     transition: transform 0.5s ease;
+
 
 
 }
@@ -553,6 +565,14 @@ input[type="checkbox"]{
 
 .profile__card__img:hover{
     animation: girar 5s infinite linear;
+}
+
+.profile__h3{
+    display: inline-block;
+    font-family: Nabla ;
+    font-size: 120px;
+
+
 }
 
 .profile__favs{

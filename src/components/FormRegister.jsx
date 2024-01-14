@@ -1,4 +1,4 @@
-import {useContext, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {UserContext} from "../context/UserContext.jsx";
 import {useNavigate} from "react-router-dom";
 import {showModalError, validateEmails, validatePassword, validateStrings} from "../functions/Validations.js";
@@ -6,6 +6,7 @@ import {saveUserInLocalStorage} from "../functions/localStorage.js";
 
 const FormRegister = () => {
 
+    const inputRef = useRef(null)
     const {user, setUser} = useContext(UserContext)
     const [infoUser, setInfoUser] = useState({
 
@@ -101,6 +102,10 @@ const FormRegister = () => {
     }
 
 
+    useEffect(() => {
+        inputRef.current.focus()
+    }, []);
+
     return (
         <form className={"form"}>
 
@@ -111,6 +116,7 @@ const FormRegister = () => {
                 placeholder={"Escriba su nombre"}
                 name={"name"}
                 className={"form__input"}
+                ref={inputRef}
                 onChange={validateField}
                 onBlur={validateField}
             >

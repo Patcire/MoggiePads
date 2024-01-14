@@ -1,9 +1,9 @@
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {showModalError, validateDate} from "../functions/Validations.js";
 
 const FormContact = () => {
 
-
+    const inputRef = useRef(null)
     const [infoUser, setInfoUser] = useState({
 
         date:"",
@@ -18,6 +18,8 @@ const FormContact = () => {
         checkboxError:""
 
     })
+
+
 
     const handleChange = (e) => {
         e.preventDefault()
@@ -98,6 +100,10 @@ const FormContact = () => {
 
     }
 
+    useEffect(() => {
+        inputRef.current.focus()
+    }, []);
+
 
     return (
         <form className={"form"}>
@@ -112,6 +118,7 @@ const FormContact = () => {
                 name={"date"}
                 className={"form__input--date"}
                 value={infoUser.date}
+                ref={inputRef}
                 onChange={validateField}
                 onBlur={validateField}>
             </input>

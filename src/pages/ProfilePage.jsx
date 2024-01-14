@@ -1,7 +1,6 @@
 import {getUserInSession} from "../functions/localStorage.js";
 import {useContext} from "react";
 import {UserContext} from "../context/UserContext.jsx";
-import Card from "../components/Card.jsx";
 import Gallery from "../components/Gallery.jsx";
 
 const ProfilePage = () => {
@@ -10,31 +9,36 @@ const ProfilePage = () => {
     const infoUser = getUserInSession(user.email)
 
     return(
-       <section className={"profile"}>
-           <article className={"profile__card"}>
+        <section className={"profile"}>
 
-               <img alt={"draw of cat"} src={"resources/cat-icon.png"}
-                    className={"profile__card__img"}></img>
+            <section className={"profile__banner"}>
+                <h3 className={"profile__h3"}> Mis favoritos</h3>
+                <article className={"profile__card"}>
 
-               <article className={"profile__card__container"}>
-                   <p className={"profile__card__p"}> <strong>Nombre</strong>: {infoUser.name} </p>
-                   <p className={"profile__card__p"}> <strong>Apellidos</strong>: {infoUser.lastname} </p>
-                   <p className={"profile__card__p"}> <strong>Correo</strong>: {infoUser.email} </p>
-               </article>
-           </article>
+                    <img alt={"draw of cat"} src={"resources/cat-icon.png"}
+                         className={"profile__card__img"}></img>
 
-           {
-               (infoUser.favs.length) ?
-                   <Gallery info={infoUser.favs} alreadyFav={true}></Gallery>
-                   :
-                   <article className={"profile__favs__nofavs"}>
-                       <h1 className={"profile__favs__h1"}>Todavía no tienes favoritos :(</h1>
-                   </article>
+                    <article className={"profile__card__container"}>
+                        <p className={"profile__card__p"}><strong>Nombre</strong>: {infoUser.name} </p>
+                        <p className={"profile__card__p"}><strong>Apellidos</strong>: {infoUser.lastname} </p>
+                        <p className={"profile__card__p"}><strong>Correo</strong>: {infoUser.email} </p>
+                    </article>
 
-           }
+                </article>
+
+            </section>
+            {
+                (infoUser.favs.length) ?
+                    <Gallery info={infoUser.favs} alreadyFav={true}></Gallery>
+                    :
+                    <article className={"profile__favs__nofavs"}>
+                        <h1 className={"profile__favs__h1"}>Todavía no tienes favoritos :(</h1>
+                    </article>
+
+            }
 
 
-       </section>
+        </section>
     )
 }
 

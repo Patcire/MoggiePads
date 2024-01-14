@@ -1,4 +1,4 @@
-import {useContext, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {UserContext} from "/src/context/UserContext.jsx";
 import {useNavigate} from "react-router-dom";
 import {showModalError, validateEmails, validatePassword} from "/src/functions/Validations.js"
@@ -17,7 +17,7 @@ const FormLogin = () => {
     })
 
     const navigate = useNavigate()
-
+    const inputRef = useRef(null)
 
     const handleChange = (e) => {
         e.preventDefault()
@@ -77,6 +77,9 @@ const FormLogin = () => {
 
     }
 
+    useEffect(() => {
+        inputRef.current.focus()
+    }, []);
 
     return (
         <form className={"form"}>
@@ -89,6 +92,7 @@ const FormLogin = () => {
                 name={"email"}
                 className={"form__input"}
                 value={infoUser.email}
+                ref={inputRef}
                 onChange={validateField}
                 onBlur={validateField}>
 
