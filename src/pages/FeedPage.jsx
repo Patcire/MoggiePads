@@ -3,6 +3,8 @@ import SearchBar from "../components/SearchBar.jsx"
 
 import Gallery from "../components/Gallery.jsx"
 import {token} from "../../token.js"
+import {findBreed} from "../functions/breedInfo.js";
+import {showModalError} from "../functions/Validations.js";
 
 
 const FeedPage = () => {
@@ -12,7 +14,7 @@ const FeedPage = () => {
     const [page, setPage] = useState(0)
     const [breed, setBreed] = useState("")
     const [info, setInfo] = useState([])
-
+    const [searchTerm, setSearchTerm] = useState("")
 
 
     const handleScroll = () => {
@@ -61,11 +63,39 @@ const FeedPage = () => {
 
     }
 
+    const handleInput = (e) => {
+        console.log(e.target.value)
+        e.preventDefault()
+        setSearchTerm(e.target.value)
+        console.log(searchTerm)
+    }
+
+    const handleClick = (e) => {
+        e.preventDefault()
+        console.log("searchTerm:", searchTerm)
+        console.log("findBreed result:", findBreed(searchTerm))
+
+        const correspondentBreedId = findBreed(searchTerm)
+        console.log(correspondentBreedId)
+        correspondentBreedId !== null ?
+            handleFilter(correspondentBreedId)
+            :
+            showModalError("error", "Raza no encontrada :(", "Prueba con alguna de las mostradas en los filtros")
+    }
+
+
 
     return(
         <>
 
-        <Gallery info={info} alreadyFav={false} handleFilter={handleFilter}></Gallery>
+        <Gallery
+            info={info}
+            alreadyFav={false}
+            handleFilter={handleFilter}
+            handleInput={handleInput}
+            handleClick={handleClick}>
+        </Gallery>
+
         <div className={"endPageRef"} ref={endPageRef}></div>
         </>
     )

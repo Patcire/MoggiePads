@@ -16,30 +16,9 @@ import {
 import {showModalError} from "../functions/Validations.js";
 
 
-const Gallery = ({info, alreadyFav, handleFilter}) => {
+const Gallery = ({info, alreadyFav, handleFilter, handleInput, handleClick}) => {
 
 
-
-    const [searchTerm, setSearchTerm] = useState("")
-    const handleInput = (e) => {
-        console.log(e.target.value)
-        e.preventDefault()
-        setSearchTerm(e.target.value)
-        console.log(searchTerm)
-    }
-
-    const handleClick = (e) => {
-        e.preventDefault()
-        console.log("searchTerm:", searchTerm)
-        console.log("findBreed result:", findBreed(searchTerm))
-
-        const correspondentBreedId = findBreed(searchTerm)
-        console.log(correspondentBreedId)
-        correspondentBreedId !== null ?
-            handleFilter(correspondentBreedId)
-            :
-            showModalError("error", "Raza no encontrada :(", "Prueba con alguna de las mostradas en los filtros")
-    }
 
     return (
         <section className={"gallery"}>
