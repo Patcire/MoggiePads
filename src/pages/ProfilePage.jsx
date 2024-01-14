@@ -2,15 +2,12 @@ import {getUserInSession} from "../functions/localStorage.js";
 import {useContext} from "react";
 import {UserContext} from "../context/UserContext.jsx";
 import Card from "../components/Card.jsx";
+import Gallery from "../components/Gallery.jsx";
 
 const ProfilePage = () => {
 
     const {user} = useContext(UserContext)
     const infoUser = getUserInSession(user.email)
-    console.log(user)
-    console.log(user.email)
-    console.log(infoUser)
-
 
     return(
        <section className={"profile"}>
@@ -26,18 +23,17 @@ const ProfilePage = () => {
                </article>
            </article>
 
-           <article className={"profile__favs"}>
-               {
-                   (infoUser.favs.length) ?
-                       infoUser.favs.map(cat => <Card key={cat.id} cat={cat} loading="lazy" alreadyFav={true}></Card>)
-                       :
-                       <article className={"profile__favs__nofavs"}>
-                           <h1 className={"profile__favs__h1"}>Todavía no tienes favoritos :(</h1>
-                       </article>
+           {
+               (infoUser.favs.length) ?
+                   <Gallery info={infoUser.favs} alreadyFav={true}></Gallery>
+                   //infoUser.favs.map(cat => <Card key={cat.id} cat={cat} loading="lazy" alreadyFav={true}></Card>)
+                   :
+                   <article className={"profile__favs__nofavs"}>
+                       <h1 className={"profile__favs__h1"}>Todavía no tienes favoritos :(</h1>
+                   </article>
 
-               }
+           }
 
-           </article>
 
        </section>
     )
