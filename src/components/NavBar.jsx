@@ -24,7 +24,6 @@ const Navbar = () => {
                             <NavLink to={"/"}>Inicio</NavLink>
                             <NavLink to={"/profile"}>MiPerfil</NavLink>
                             <NavLink to={"/feed"}>Feed</NavLink>
-                            <NavLink to={"/anecdotes"}>Anecdotas</NavLink>
                             <NavLink to={"/contact"}>Contacto</NavLink>
                             <button className={"logout"} onClick={() => logOut()}>Logout</button>
                         </nav>
@@ -33,7 +32,6 @@ const Navbar = () => {
                         <nav className={"header__navbar"}>
                             <NavLink to={"/"}>Inicio</NavLink>
                             <NavLink to={"/login"}>Login/Registro</NavLink>
-                            <NavLink to={"/anecdotes"}>Anecdotas</NavLink>
                             <NavLink to={"/contact"}>Contacto</NavLink>
 
                         </nav>
