@@ -6,50 +6,54 @@ import {abobUrl, abysUrl, baliUrl, bengUrl, birmUrl, persUrl, siamUrl, sphyUrl} 
 const Gallery = ({info, alreadyFav, handleFilter, handleInput, handleClick}) => {
 
 
+    const userIsHere = window.location.href
 
     return (
         <section className={"gallery"}>
 
+             {
+                 userIsHere.includes("feed") &&
+             <>
+                <form className={"searchbar"}>
+                    <input
+                        type={"text"}
+                        placeholder={"Busca por raza..."}
+                        className={"searchbar__input"}
+                        name={"breed"}
+                        onChange={handleInput}
+                    >
+                    </input>
 
-            <form className={"searchbar"}>
-                <input
-                    type={"text"}
-                    placeholder={"Busca por raza..."}
-                    className={"searchbar__input"}
-                    name={"breed"}
-                    onChange={handleInput}
-                >
-                </input>
+                    <button
+                        type={"submit"}
+                        className={"primary-button--v3"}
+                        onClick={handleClick}
+                    >
+                        Buscar
+                    </button>
 
-                <button
-                    type={"submit"}
-                    className={"primary-button--v3"}
-                    onClick={handleClick}
-                >
-                    Buscar
-                </button>
+                </form>
 
-            </form>
+                <section className={"filters"}>
+                    <article>
+                        <h3>Raza</h3>
+                        <ul>
+                            <li>
+                                <button onClick={() => handleFilter(bengUrl)}>Bengalí</button>
+                                <button onClick={() => handleFilter(abysUrl)}>Abisino</button>
+                                <button onClick={() => handleFilter(persUrl)}>Persa</button>
+                                <button onClick={() => handleFilter(siamUrl)}>Siamés</button>
+                                <button onClick={() => handleFilter(abobUrl)}>Americano</button>
+                                <button onClick={() => handleFilter(baliUrl)}>Balinés</button>
+                                <button onClick={() => handleFilter(birmUrl)}>Birmano</button>
+                                <button onClick={() => handleFilter(sphyUrl)}>Esfinge</button>
 
-            <section className={"filters"}>
-                <article>
-                    <h3>Raza</h3>
-                    <ul>
-                        <li>
-                            <button onClick={() => handleFilter(bengUrl)}>Bengalí</button>
-                            <button onClick={() => handleFilter(abysUrl)}>Abisino</button>
-                            <button onClick={() => handleFilter(persUrl)}>Persa</button>
-                            <button onClick={() => handleFilter(siamUrl)}>Siamés</button>
-                            <button onClick={() => handleFilter(abobUrl)}>Americano</button>
-                            <button onClick={() => handleFilter(baliUrl)}>Balinés</button>
-                            <button onClick={() => handleFilter(birmUrl)}>Birmano</button>
-                            <button onClick={() => handleFilter(sphyUrl)}>Esfinge</button>
-
-                        </li>
-                    </ul>
-                </article>
+                            </li>
+                        </ul>
+                    </article>
             </section>
-
+             </>
+            }
             <section className={"cards"}>
 
                 {

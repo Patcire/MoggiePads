@@ -26,7 +26,6 @@ const ProfilePage = () => {
            {
                (infoUser.favs.length) ?
                    <Gallery info={infoUser.favs} alreadyFav={true}></Gallery>
-                   //infoUser.favs.map(cat => <Card key={cat.id} cat={cat} loading="lazy" alreadyFav={true}></Card>)
                    :
                    <article className={"profile__favs__nofavs"}>
                        <h1 className={"profile__favs__h1"}>Todavía no tienes favoritos :(</h1>
