@@ -4,14 +4,14 @@ import {token} from "../../token.js";
 
 const Gallery = ({info, alreadyFav, handleFilter}) => {
 
-    const bengUrl = `https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&breed_ids=beng`
-    const abysUrl = `https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&breed_ids=abys`
-    const persUrl = `https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&breed_ids=pers`
-    const siamUrl = `https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&breed_ids=siam`
-    const abobUrl = `https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&breed_ids=abob`;
-    const baliUrl = `https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&breed_ids=bali`;
-    const birmUrl = `https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&breed_ids=birm`;
-    const sphyUrl = `https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&breed_ids=sphy`;
+    const bengUrl = `&breed_ids=beng`
+    const abysUrl = `&breed_ids=abys`
+    const persUrl = `&breed_ids=pers`
+    const siamUrl = `&breed_ids=siam`
+    const abobUrl = `&breed_ids=abob`
+    const baliUrl = `&breed_ids=bali`
+    const birmUrl = `&breed_ids=birm`
+    const sphyUrl = `&breed_ids=sphy`
 
 
     return (

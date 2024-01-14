@@ -1,9 +1,8 @@
+import {useEffect, useRef, useState} from "react"
+import SearchBar from "../components/SearchBar.jsx"
 
-import {useEffect, useRef, useState} from "react";
-import SearchBar from "../components/SearchBar.jsx";
-
-import Gallery from "../components/Gallery.jsx";
-import {token} from "../../token.js";
+import Gallery from "../components/Gallery.jsx"
+import {token} from "../../token.js"
 
 
 const FeedPage = () => {
@@ -11,22 +10,14 @@ const FeedPage = () => {
     const endPageRef = useRef(null)
 
     const [page, setPage] = useState(0)
-    const [url, setUrl] = useState(`https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&page=${page}`)
+    const [breed, setBreed] = useState("")
     const [info, setInfo] = useState([])
 
 
     const handleScroll = () => {
 
-        let scrollPosition = window.scrollY
-        console.log(scrollPosition)
         if (endPageRef.current && endPageRef.current.getBoundingClientRect().bottom <= window.innerHeight+ 2500) {
-            //setPage(prevState => prevState+1)
-
-            setPage(prevPage => {
-                const newPage = prevPage + 1
-                setUrl(`https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&page=${newPage}`)
-                return newPage
-            })
+            setPage(page+1)
         }
 
     }
@@ -39,10 +30,11 @@ const FeedPage = () => {
     })
 
     useEffect(() => {
+        const url = `https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&page=${page}${breed}`
         fetch(url)
             .then(response => response.json())
             .then(data => {
-
+                console.log(url)
                 const filteredData = data.filter(cat => cat !== null && cat !== undefined && cat.breeds && cat.breeds.length > 0)
                 const combinedInfo = [...info, ...filteredData]
                 const noRepeatedMap = new Map(combinedInfo.map(item => [item.id, item]))
@@ -51,7 +43,7 @@ const FeedPage = () => {
 
             })
             .catch(error => console.log(error))
-    }, [url, page])
+    }, [page, breed])
 
 
     if (!info || info.length===0) {
@@ -60,11 +52,11 @@ const FeedPage = () => {
         )
     }
 
-    const handleFilter = (newUrl) =>{
-        console.log('clicl')
+    const handleFilter = (breedInfo) =>{
+
         setPage(0)
         setInfo([])
-        setUrl(newUrl)
+        setBreed(breedInfo)
 
     }
 
