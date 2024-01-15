@@ -62,6 +62,7 @@ const FeedPage = () => {
 
         setPage(0)
         setInfo([])
+        setLoading(true)
         setBreed(breedInfo)
 
     }
