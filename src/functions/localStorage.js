@@ -26,11 +26,13 @@ export const saveUserInLocalStorage = (key, user) => {
     return true
 }
 
-export const checkUser = (user) =>{
+export const checkUser = (infoUser) =>{
 
     const localStorage =  getLocalStorage("users")
 
-   return localStorage.some(element => element.email === user.email && element.password === user.password)
+    if (!localStorage) return false
+
+   return localStorage.some(element => element.email === infoUser.email && element.password === infoUser.password)
 
 }
 

@@ -27,19 +27,17 @@ const FormLogin = () => {
             return
         }
 
-        checkUser(infoUser) ?
-                (
-                setUser({
+        else if(checkUser(infoUser)){
+            setUser({
 
-                    connected: true,
-                    email: infoUser.email
+                connected: true,
+                email: infoUser.email
 
-                }),
-                navigate("/feed")
-                )
-                :
-                showModal("error", "Contraseña y correo no coinciden",
-                "¡Vuelve a intentarlo!")
+            })
+            navigate("/feed")
+        }
+
+        showModal("error", "Contraseña y correo no coinciden", "¡Vuelve a intentarlo!")
 
     }
 
