@@ -13,11 +13,12 @@ const FeedPage = () => {
     const [breed, setBreed] = useState("")
     const [info, setInfo] = useState([])
     const [searchTerm, setSearchTerm] = useState("")
-
+    const [loading, setLoading] = useState(true)
 
     const handleScroll = () => {
 
         if (endPageRef.current && endPageRef.current.getBoundingClientRect().bottom <= window.innerHeight+ 2500) {
+            setLoading(true)
             setPage(page+1)
         }
 
@@ -33,7 +34,7 @@ const FeedPage = () => {
     useEffect(() => {
         const url = `https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&page=${page}${breed}`
 
-        fetch(url)
+        loading && fetch(url)
             .then(response => response.json())
             .then(data => {
 
@@ -41,14 +42,14 @@ const FeedPage = () => {
                 const combinedInfo = [...info, ...filteredData]
                 const noRepeatedMap = new Map(combinedInfo.map(item => [item.id, item]))
                 setInfo([...noRepeatedMap.values()])
-
+                setLoading(false)
 
             })
             .catch(error => console.log(error))
 
 
 
-    }, [page, breed])
+    }, [page, breed, loading])
 
 
     if (!info || info.length===0) {
