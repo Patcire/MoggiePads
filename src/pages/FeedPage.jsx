@@ -5,6 +5,7 @@ import {token} from "../../token.js"
 import {findBreed} from "../functions/breedInfo.js";
 import {showModal} from "../functions/Validations.js";
 
+
 const FeedPage = () => {
 
     const endPageRef = useRef(null)
@@ -54,7 +55,9 @@ const FeedPage = () => {
 
     if (!info || info.length===0) {
         return(
-            <h3 className={"cargando"}>Cargando...</h3>
+            <article className={"container__loader"}>
+                <div className={"loader"}></div>
+            </article>
         )
     }
 
@@ -91,7 +94,6 @@ const FeedPage = () => {
 
     return(
         <>
-
         <Gallery
             info={info}
             alreadyFav={false}
