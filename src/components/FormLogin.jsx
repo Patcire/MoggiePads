@@ -1,7 +1,7 @@
 import {useContext, useEffect, useRef, useState} from "react";
 import {UserContext} from "/src/context/UserContext.jsx";
 import {useNavigate} from "react-router-dom";
-import {showModalError, validateEmails, validatePassword} from "/src/functions/Validations.js"
+import {showModal, validateField} from "/src/functions/Validations.js"
 import {checkUser} from "../functions/localStorage.js";
 
 const FormLogin = () => {
@@ -19,37 +19,6 @@ const FormLogin = () => {
     const navigate = useNavigate()
     const inputRef = useRef(null)
 
-    const handleChange = (e) => {
-        e.preventDefault()
-        const {name, value} = e.target
-        setInfoUser({
-                ...infoUser,
-                [name]: value
-            }
-        )
-    }
-
-    const validateField = (e) => {
-        e.preventDefault()
-        handleChange(e)
-
-        if (e.target.name === "email") {
-            setError({
-                ...error,
-                emailError: !validateEmails(e.target.value) ? "Introduzca un email válido" : ""
-            })
-        }
-
-        if (e.target.name === "password") {
-            setError({
-                ...error,
-                passwordError: !validatePassword(e.target.value) ? "La contraseña debe tener al menos 8 caracteres" : ""
-            })
-        }
-
-
-
-    }
 
     const notValidLogInForm = () => {
         return (error.emailError || error.passwordError || !infoUser.email || !infoUser.password)
@@ -59,7 +28,7 @@ const FormLogin = () => {
     const logIn = (e) => {
         e.preventDefault()
         if (notValidLogInForm()) {
-            showModalError("error", "Ooops", "There is an error in the form, fix it!")
+            showModal("error", "Ooops", "There is an error in the form, fix it!")
             return
         }
         checkUser(infoUser) ?
@@ -70,7 +39,7 @@ const FormLogin = () => {
 
             })
             :
-            showModalError("error", "User and Password doesn't match",
+            showModal("error", "User and Password doesn't match",
             "Check your data!")
 
         navigate("/feed")
@@ -93,8 +62,8 @@ const FormLogin = () => {
                 className={"form__input"}
                 value={infoUser.email}
                 ref={inputRef}
-                onChange={validateField}
-                onBlur={validateField}>
+                onChange={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
+                onBlur={(e)=>validateField(e,setInfoUser, infoUser, setError, error)}>
 
             </input>
             {error.emailError && <p className={"error__p"}>{error.emailError}</p>}
@@ -105,8 +74,8 @@ const FormLogin = () => {
                 className={"form__input--password"}
                 autoComplete={"off"}
                 value={infoUser.password}
-                onChange={validateField}
-                onBlur={validateField}>
+                onChange={(e)=> validateField(e, setInfoUser, infoUser, setError, error)}
+                onBlur={(e)=> validateField(e, setInfoUser, infoUser, setError, error)}>
 
             </input>
             {error.passwordError && <p className={"error__p"}>{error.passwordError}</p>}

@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState} from "react";
-import {showModalError, validateDate} from "../functions/Validations.js";
+import {showModal, validateField} from "../functions/Validations.js";
 
 const FormContact = () => {
 
@@ -21,57 +21,6 @@ const FormContact = () => {
 
 
 
-    const handleChange = (e) => {
-        e.preventDefault()
-        const {name, value} = e.target
-        setInfoUser({
-                ...infoUser,
-                [name]: value
-            }
-        )
-    }
-
-
-
-
-    const validateField = (e) => {
-        e.preventDefault()
-        handleChange(e)
-
-        if (e.target.name === "date") {
-            setError({
-                ...error,
-                dateError: !validateDate(e.target.value) ? "Su edad debe estar entre los 10-100 años" : ""
-            })
-        }
-
-        if (e.target.name === "number") {
-            setError({
-                ...error,
-                numberError: e.target.value>5 || e.target.value<1 ? "Mín 1 - Máx 5" : ""
-            })
-        }
-
-        if (e.target.name === "message"){
-            setError({
-                ...error,
-                messageError: e.target.value.trim().length<1 ? "Escriba su mensaje" : ""
-            })
-        }
-
-        if (e.target.name === "checkbox"){
-            setError({
-                ...error,
-                checkboxError: !e.target.checked ? "Acepte la política de datos" : ""
-            })
-        }
-
-
-
-
-
-    }
-
     const notValidContactForm = () =>{
         return (error.dateError || error.numberError || error.messageError || error.checkboxError ||
             !infoUser.date || !infoUser.number ||
@@ -92,10 +41,10 @@ const FormContact = () => {
     const handleClick = (e) =>{
        e.preventDefault()
         if (notValidContactForm()){
-            showModalError("error", "Ooops", "There is an error in the form, fix it!")
+            showModal("error", "Ooops", "There is an error in the form, fix it!")
             return
         }
-        showModalError("success", "All correct!", "We'll read your message as soon as possible")
+        showModal("success", "All correct!", "We'll read your message as soon as possible")
         cleanForm()
 
     }
@@ -119,8 +68,8 @@ const FormContact = () => {
                 className={"form__input--date"}
                 value={infoUser.date}
                 ref={inputRef}
-                onChange={validateField}
-                onBlur={validateField}>
+                onChange={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
+                onBlur={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}>
             </input>
             {error.dateError && <p className={"error__p"}>{error.dateError}</p>}
 
@@ -134,8 +83,8 @@ const FormContact = () => {
                 min={"1"}
                 max={"5"}
                 value = {infoUser.number}
-                onChange={validateField}
-                onBlur={validateField}>
+                onChange={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
+                onBlur={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}>
             </input>
             {error.numberError && <p className={"error__p"}>{error.numberError}</p>}
 
@@ -145,8 +94,8 @@ const FormContact = () => {
                 minLength="10" maxLength="100"
                 placeholder={"Escriba aquí su mensaje"}
                 value = {infoUser.message}
-                onChange={validateField}
-                onBlur={validateField}
+                onChange={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
+                onBlur={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
             >
             </textarea>
             {error.messageError && <p className={"error__p"}>{error.messageError}</p>}
@@ -160,7 +109,7 @@ const FormContact = () => {
                     type={"checkbox"}
                     name={"checkbox"}
                     className={"form__input"}
-                    onBlur={validateField}
+                    onBlur={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
                 >
                 </input>
             </article>

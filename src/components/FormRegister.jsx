@@ -1,7 +1,7 @@
 import {useContext, useEffect, useRef, useState} from "react";
 import {UserContext} from "../context/UserContext.jsx";
 import {useNavigate} from "react-router-dom";
-import {showModalError, validateEmails, validatePassword, validateStrings} from "../functions/Validations.js";
+import {showModal, validateField,} from "../functions/Validations.js";
 import {saveUserInLocalStorage} from "../functions/localStorage.js";
 
 const FormRegister = () => {
@@ -27,51 +27,7 @@ const FormRegister = () => {
 
     const navigate = useNavigate()
 
-    const handleChange = (e) => {
-        e.preventDefault()
-        const {name, value} = e.target
-        setInfoUser({
-                ...infoUser,
-                [name]: value
-            }
-        )
-    }
 
-
-    const validateField = (e) => {
-        e.preventDefault()
-        handleChange(e)
-
-        if (e.target.name === "email") {
-            setError({
-                ...error,
-                emailError: !validateEmails(e.target.value) ? "Introduzca un email válido" : ""
-            })
-        }
-
-        if (e.target.name === "password") {
-            setError({
-                ...error,
-                passwordError: !validatePassword(e.target.value) ? "La contraseña debe tener al menos 8 caracteres" : ""
-            })
-        }
-
-        if (e.target.name === "name") {
-            setError({
-                ...error,
-                nameError: !validateStrings(e.target.value) ? "Este campo no puede tener menos de 4 caracteres ni numeros" : ""
-            })
-        }
-
-        if (e.target.name === "lastname") {
-            setError({
-                ...error,
-                lastnameError: !validateStrings(e.target.value) ? "Este campo no puede tener menos de 4 caracteres" : ""
-            })
-        }
-
-
-    }
 
     const notValidRegisterForm = () => {
         return (error.emailError || error.passwordError || error.nameError || error.lastnameError  || !infoUser.email || !infoUser.password ||
@@ -81,12 +37,12 @@ const FormRegister = () => {
     const register = (e) => {
         e.preventDefault()
         if (notValidRegisterForm()) {
-            showModalError("error", "Ooops", "There is an error in the form, fix it!")
+            showModal("error", "Ooops", "There is an error in the form, fix it!")
             return
         }
 
         if (saveUserInLocalStorage("users", infoUser)){
-            showModalError("success", "Now you are register!", "enjoy!")
+            showModal("success", "Now you are register!", "enjoy!")
             setUser({
                 connected: true,
                 email: infoUser.email
@@ -95,7 +51,7 @@ const FormRegister = () => {
             return
         }
 
-        showModalError("error", "User already exist", "You must register with another email!")
+        showModal("error", "User already exist", "You must register with another email!")
 
 
 
@@ -117,8 +73,8 @@ const FormRegister = () => {
                 name={"name"}
                 className={"form__input"}
                 ref={inputRef}
-                onChange={validateField}
-                onBlur={validateField}
+                onChange={(e)=> validateField(e, setInfoUser, infoUser, setError, error)}
+                onBlur={(e)=> validateField(e, setInfoUser, infoUser, setError, error)}
             >
             </input>
             {error.nameError && <p className={"error__p"}>{error.nameError}</p>}
@@ -128,8 +84,8 @@ const FormRegister = () => {
                 placeholder={"Escriba sus apellidos"}
                 name={"lastname"}
                 className={"form__input"}
-                onChange={validateField}
-                onBlur={validateField}
+                onChange={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
+                onBlur={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
             >
             </input>
             {error.lastnameError && <p className={"error__p"}>{error.lastnameError}</p>}
@@ -139,8 +95,8 @@ const FormRegister = () => {
                 placeholder={"Escriba su correo"}
                 name={"email"}
                 className={"form__input"}
-                onChange={validateField}
-                onBlur={validateField}
+                onChange={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
+                onBlur={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
             >
             </input>
             {error.emailError && <p className={"error__p"}>{error.emailError}</p>}
@@ -151,8 +107,8 @@ const FormRegister = () => {
                 name={"password"}
                 className={"form__input--password"}
                 autoComplete={"off"}
-                onChange={validateField}
-                onBlur={validateField}
+                onChange={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
+                onBlur={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
             >
             </input>
             {error.passwordError && <p className={"error__p"}>{error.passwordError}</p>}

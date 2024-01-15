@@ -3,7 +3,7 @@ import {useEffect, useRef, useState} from "react"
 import Gallery from "../components/Gallery.jsx"
 import {token} from "../../token.js"
 import {findBreed} from "../functions/breedInfo.js";
-import {showModalError} from "../functions/Validations.js";
+import {showModal} from "../functions/Validations.js";
 
 const FeedPage = () => {
 
@@ -82,7 +82,7 @@ const FeedPage = () => {
         correspondentBreedId !== null ?
             handleFilter(correspondentBreedId)
             :
-            showModalError("error", "Raza no encontrada :(", "Prueba con alguna de las mostradas en los filtros\n (no uses acentos)")
+            showModal("error", "Raza no encontrada :(", "Prueba con alguna de las mostradas en los filtros\n (no uses acentos)")
     }
 
 
