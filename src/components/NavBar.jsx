@@ -1,24 +1,24 @@
 import {NavLink, useNavigate} from 'react-router-dom'
 import {useContext} from "react";
-import {UserContext} from "../context/UserContext.jsx";
+import {UserConnectedContext} from "../context/UserConnectedContext.jsx";
 
 
 const Navbar = () => {
 
-    const {user, setUser} = useContext(UserContext)
+    const {userConnected, setUserConnected} = useContext(UserConnectedContext)
 
 
     const navigate = useNavigate()
 
     const logOut = () => {
-        setUser(false)
+        setUserConnected(false)
         navigate("/")
     }
 
 
     return (
 
-                user ?
+                userConnected ?
                     (
                         <nav className={"header__navbar"}>
                             <NavLink to={"/"}>Inicio</NavLink>

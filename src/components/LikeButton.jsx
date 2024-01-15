@@ -1,12 +1,12 @@
 import {deleteFav, saveFav} from "../functions/localStorage.js";
 import {useContext, useState} from "react";
-import {UserContext} from "../context/UserContext.jsx";
+import {UserConnectedContext} from "../context/UserConnectedContext.jsx";
 import { IoMdHeart } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 
 const LikeButton = ({cat, alreadyFav}) => {
 
-    const {user} = useContext(UserContext)
+    const {user} = useContext(UserConnectedContext)
 
     const [icon, setIcon] = useState(!!alreadyFav)
 

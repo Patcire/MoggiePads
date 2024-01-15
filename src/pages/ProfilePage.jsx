@@ -1,12 +1,12 @@
 import {getUserInSession} from "../functions/localStorage.js";
 import {useContext} from "react";
-import {UserContext} from "../context/UserContext.jsx";
+import {UserConnectedContext} from "../context/UserConnectedContext.jsx";
 import Gallery from "../components/Gallery.jsx";
 
 const ProfilePage = () => {
 
-    const {user} = useContext(UserContext)
-    const infoUser = getUserInSession(user.email)
+    const {userConnected} = useContext(UserConnectedContext)
+    const infoUser = getUserInSession(userConnected.email)
 
     return(
         <section className={"profile"}>

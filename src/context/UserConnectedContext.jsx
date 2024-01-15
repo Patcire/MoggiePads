@@ -1,9 +1,9 @@
 import { createContext, useState } from "react";
 
-export const UserContext = createContext()
+export const UserConnectedContext = createContext()
 
 const UserProvider = ({children}) => {
-    const [user, setUser] = useState(
+    const [userConnected, setUserConnected] = useState(
         {
             connected: false,
             email: ""
@@ -11,9 +11,9 @@ const UserProvider = ({children}) => {
     )
 
     return (
-        <UserContext.Provider value={{user, setUser}}>
+        <UserConnectedContext.Provider value={{userConnected, setUserConnected}}>
             {children}
-        </UserContext.Provider>
+        </UserConnectedContext.Provider>
     )
 
 }

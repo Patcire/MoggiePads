@@ -4,11 +4,12 @@ import {cleanForm, notValidForm, showModal, validateField} from "../functions/Va
 const FormContact = () => {
 
     const inputRef = useRef(null)
-    const [infoUser, setInfoUser] = useState({
+    const [infoForm, setInfoForm] = useState({
 
         date:"",
         number:"",
         message:""
+
     })
 
     const [error, setError] = useState({
@@ -22,12 +23,12 @@ const FormContact = () => {
 
     const handleClick = (e) =>{
        e.preventDefault()
-        if (notValidForm(error, infoUser)){
+        if (notValidForm(error, infoForm)){
             showModal("error", "Ooops", "¡Hay algún error en el formulario!")
             return
         }
         showModal("success", "Gracias por contactar", "Le contestaremos lo antes posible")
-        cleanForm(setInfoUser)
+        cleanForm(setInfoForm)
 
     }
 
@@ -48,10 +49,10 @@ const FormContact = () => {
                 type={"date"}
                 name={"date"}
                 className={"form__input--date"}
-                value={infoUser.date}
+                value={infoForm.date}
                 ref={inputRef}
-                onChange={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
-                onBlur={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}>
+                onChange={(e)=> validateField(e,setInfoForm, infoForm, setError, error)}
+                onBlur={(e)=> validateField(e,setInfoForm, infoForm, setError, error)}>
             </input>
             {error.dateError && <p className={"error__p"}>{error.dateError}</p>}
 
@@ -64,9 +65,9 @@ const FormContact = () => {
                 className={"form__input--number"}
                 min={"1"}
                 max={"5"}
-                value = {infoUser.number}
-                onChange={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
-                onBlur={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}>
+                value = {infoForm.number}
+                onChange={(e)=> validateField(e,setInfoForm, infoForm, setError, error)}
+                onBlur={(e)=> validateField(e,setInfoForm, infoForm, setError, error)}>
             </input>
             {error.numberError && <p className={"error__p"}>{error.numberError}</p>}
 
@@ -75,9 +76,9 @@ const FormContact = () => {
                 id="message" name="message" rows="4" cols="50"
                 minLength="10" maxLength="100"
                 placeholder={"Escriba aquí su mensaje"}
-                value = {infoUser.message}
-                onChange={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
-                onBlur={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
+                value = {infoForm.message}
+                onChange={(e)=> validateField(e,setInfoForm, infoForm, setError, error)}
+                onBlur={(e)=> validateField(e,setInfoForm, infoForm, setError, error)}
             >
             </textarea>
             {error.messageError && <p className={"error__p"}>{error.messageError}</p>}
@@ -91,7 +92,7 @@ const FormContact = () => {
                     type={"checkbox"}
                     name={"checkbox"}
                     className={"form__input"}
-                    onBlur={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
+                    onBlur={(e)=> validateField(e,setInfoForm, infoForm, setError, error)}
                 >
                 </input>
             </article>

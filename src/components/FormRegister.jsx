@@ -1,5 +1,5 @@
 import {useContext, useEffect, useRef, useState} from "react";
-import {UserContext} from "../context/UserContext.jsx";
+import {UserConnectedContext} from "../context/UserConnectedContext.jsx";
 import {useNavigate} from "react-router-dom";
 import {notValidForm, showModal, validateField,} from "../functions/Validations.js";
 import {saveUserInLocalStorage} from "../functions/localStorage.js";
@@ -7,8 +7,8 @@ import {saveUserInLocalStorage} from "../functions/localStorage.js";
 const FormRegister = () => {
 
     const inputRef = useRef(null)
-    const {user, setUser} = useContext(UserContext)
-    const [infoUser, setInfoUser] = useState({
+    const {userConnected, setUserConnected} = useContext(UserConnectedContext)
+    const [infoNewUser, setInfoNewUser] = useState({
 
         name:"",
         lastname:"",
@@ -30,17 +30,17 @@ const FormRegister = () => {
 
     const register = (e) => {
         e.preventDefault()
-        if (notValidForm(error, infoUser)) {
+        if (notValidForm(error, infoNewUser)) {
             showModal("error", "Ooops", "¡Hay algún error en el formulario!")
             return
         }
 
-        if (saveUserInLocalStorage("users", infoUser)){
+        if (saveUserInLocalStorage("users", infoNewUser)){
             navigate("/feed")
             showModal("success", "Now you are register!", "enjoy!")
-            setUser({
+            setUserConnected({
                 connected: true,
-                email: infoUser.email
+                email: infoNewUser.email
             })
             return
         }
@@ -67,8 +67,8 @@ const FormRegister = () => {
                 name={"name"}
                 className={"form__input"}
                 ref={inputRef}
-                onChange={(e)=> validateField(e, setInfoUser, infoUser, setError, error)}
-                onBlur={(e)=> validateField(e, setInfoUser, infoUser, setError, error)}
+                onChange={(e)=> validateField(e, setInfoNewUser, infoNewUser, setError, error)}
+                onBlur={(e)=> validateField(e, setInfoNewUser, infoNewUser, setError, error)}
             >
             </input>
             {error.nameError && <p className={"error__p"}>{error.nameError}</p>}
@@ -78,8 +78,8 @@ const FormRegister = () => {
                 placeholder={"Escriba sus apellidos"}
                 name={"lastname"}
                 className={"form__input"}
-                onChange={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
-                onBlur={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
+                onChange={(e)=> validateField(e,setInfoNewUser, infoNewUser, setError, error)}
+                onBlur={(e)=> validateField(e,setInfoNewUser, infoNewUser, setError, error)}
             >
             </input>
             {error.lastnameError && <p className={"error__p"}>{error.lastnameError}</p>}
@@ -89,8 +89,8 @@ const FormRegister = () => {
                 placeholder={"Escriba su correo"}
                 name={"email"}
                 className={"form__input"}
-                onChange={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
-                onBlur={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
+                onChange={(e)=> validateField(e,setInfoNewUser, infoNewUser, setError, error)}
+                onBlur={(e)=> validateField(e,setInfoNewUser, infoNewUser, setError, error)}
             >
             </input>
             {error.emailError && <p className={"error__p"}>{error.emailError}</p>}
@@ -101,8 +101,8 @@ const FormRegister = () => {
                 name={"password"}
                 className={"form__input--password"}
                 autoComplete={"off"}
-                onChange={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
-                onBlur={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
+                onChange={(e)=> validateField(e,setInfoNewUser, infoNewUser, setError, error)}
+                onBlur={(e)=> validateField(e,setInfoNewUser, infoNewUser, setError, error)}
             >
             </input>
             {error.passwordError && <p className={"error__p"}>{error.passwordError}</p>}
