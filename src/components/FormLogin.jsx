@@ -1,7 +1,7 @@
 import {useContext, useEffect, useRef, useState} from "react";
 import {UserContext} from "/src/context/UserContext.jsx";
 import {useNavigate} from "react-router-dom";
-import {showModal, validateField} from "/src/functions/Validations.js"
+import {notValidForm, showModal, validateField} from "/src/functions/Validations.js"
 import {checkUser} from "../functions/localStorage.js";
 
 const FormLogin = () => {
@@ -19,30 +19,27 @@ const FormLogin = () => {
     const navigate = useNavigate()
     const inputRef = useRef(null)
 
-
-    const notValidLogInForm = () => {
-        return (error.emailError || error.passwordError || !infoUser.email || !infoUser.password)
-
-    }
-
     const logIn = (e) => {
         e.preventDefault()
-        if (notValidLogInForm()) {
-            showModal("error", "Ooops", "There is an error in the form, fix it!")
+
+        if (notValidForm(error, infoUser)){
+            showModal("error", "Ooops", "¡Hay algún error en el formulario!")
             return
         }
+
         checkUser(infoUser) ?
-            setUser({
+                (
+                setUser({
 
-                connected: true,
-                email: infoUser.email
+                    connected: true,
+                    email: infoUser.email
 
-            })
-            :
-            showModal("error", "User and Password doesn't match",
-            "Check your data!")
-
-        navigate("/feed")
+                }),
+                navigate("/feed")
+                )
+                :
+                showModal("error", "Contraseña y correo no coinciden",
+                "¡Vuelve a intentarlo!")
 
     }
 
@@ -63,10 +60,11 @@ const FormLogin = () => {
                 value={infoUser.email}
                 ref={inputRef}
                 onChange={(e)=> validateField(e,setInfoUser, infoUser, setError, error)}
-                onBlur={(e)=>validateField(e,setInfoUser, infoUser, setError, error)}>
-
+                onBlur={(e)=>validateField(e,setInfoUser, infoUser, setError, error)}
+            >
             </input>
             {error.emailError && <p className={"error__p"}>{error.emailError}</p>}
+
             <input
                 type={"email"}
                 placeholder={" Escriba su contraseña"}
@@ -75,8 +73,8 @@ const FormLogin = () => {
                 autoComplete={"off"}
                 value={infoUser.password}
                 onChange={(e)=> validateField(e, setInfoUser, infoUser, setError, error)}
-                onBlur={(e)=> validateField(e, setInfoUser, infoUser, setError, error)}>
-
+                onBlur={(e)=> validateField(e, setInfoUser, infoUser, setError, error)}
+            >
             </input>
             {error.passwordError && <p className={"error__p"}>{error.passwordError}</p>}
 

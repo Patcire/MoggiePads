@@ -1,7 +1,7 @@
 import {useContext, useEffect, useRef, useState} from "react";
 import {UserContext} from "../context/UserContext.jsx";
 import {useNavigate} from "react-router-dom";
-import {showModal, validateField,} from "../functions/Validations.js";
+import {notValidForm, showModal, validateField,} from "../functions/Validations.js";
 import {saveUserInLocalStorage} from "../functions/localStorage.js";
 
 const FormRegister = () => {
@@ -28,26 +28,20 @@ const FormRegister = () => {
     const navigate = useNavigate()
 
 
-
-    const notValidRegisterForm = () => {
-        return (error.emailError || error.passwordError || error.nameError || error.lastnameError  || !infoUser.email || !infoUser.password ||
-            !infoUser.name || !infoUser.password)
-    }
-
     const register = (e) => {
         e.preventDefault()
-        if (notValidRegisterForm()) {
-            showModal("error", "Ooops", "There is an error in the form, fix it!")
+        if (notValidForm(error, infoUser)) {
+            showModal("error", "Ooops", "¡Hay algún error en el formulario!")
             return
         }
 
         if (saveUserInLocalStorage("users", infoUser)){
+            navigate("/feed")
             showModal("success", "Now you are register!", "enjoy!")
             setUser({
                 connected: true,
                 email: infoUser.email
             })
-            navigate("/feed")
             return
         }
 

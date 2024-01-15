@@ -113,6 +113,21 @@ export const validateField = (e, setInfoUser, infoUser, setError, error) => {
 
 }
 
+export const notValidForm = (error, infoUser) => {
+
+    return  Object.values(error).some((value) => value.length>0) ||
+        Object.values(infoUser).some((value) => !value)
+
+
+}
+
+export const cleanForm = (setInfoUser) => {
+    setInfoUser({
+        date:"",
+        number:"",
+        message:""
+    })
+}
 
 
 export const showModal = (icon, title, text) =>{

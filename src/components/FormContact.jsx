@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState} from "react";
-import {showModal, validateField} from "../functions/Validations.js";
+import {cleanForm, notValidForm, showModal, validateField} from "../functions/Validations.js";
 
 const FormContact = () => {
 
@@ -20,32 +20,14 @@ const FormContact = () => {
     })
 
 
-
-    const notValidContactForm = () =>{
-        return (error.dateError || error.numberError || error.messageError || error.checkboxError ||
-            !infoUser.date || !infoUser.number ||
-            !infoUser.message)
-
-
-    }
-
-    const cleanForm = () => {
-        setInfoUser({
-            date:"",
-            number:"",
-            message:""
-        })
-        console.log('cleaned')
-    }
-
     const handleClick = (e) =>{
        e.preventDefault()
-        if (notValidContactForm()){
-            showModal("error", "Ooops", "There is an error in the form, fix it!")
+        if (notValidForm(error, infoUser)){
+            showModal("error", "Ooops", "¡Hay algún error en el formulario!")
             return
         }
-        showModal("success", "All correct!", "We'll read your message as soon as possible")
-        cleanForm()
+        showModal("success", "Gracias por contactar", "Le contestaremos lo antes posible")
+        cleanForm(setInfoUser)
 
     }
 
