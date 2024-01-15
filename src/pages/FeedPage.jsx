@@ -49,7 +49,7 @@ const FeedPage = () => {
 
 
 
-    }, [page, breed, loading])
+    }, [page, breed])
 
 
     if (!info || info.length===0) {
