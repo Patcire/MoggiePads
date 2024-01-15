@@ -1,12 +1,23 @@
 import Card from "./Card.jsx";
-import {goToTop} from "../functions/scroll.js";
+import {goToTop, showRelativeToPosition} from "../functions/scroll.js";
 import {abobUrl, abysUrl, baliUrl, bengUrl, birmUrl, persUrl, siamUrl, sphyUrl} from "../functions/breedInfo.js";
+import {useEffect, useState} from "react";
 
 
 const Gallery = ({info, alreadyFav, handleFilter, handleInput, handleClick}) => {
 
 
     const userIsHere = window.location.href
+    const [showButton, setShowButton] = useState(false)
+
+    const handleScrollYPosition = () =>{
+        showRelativeToPosition(setShowButton)
+    }
+
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScrollYPosition)
+    }, [])
 
     return (
         <section className={"gallery"}>
@@ -63,7 +74,7 @@ const Gallery = ({info, alreadyFav, handleFilter, handleInput, handleClick}) => 
                 }
 
             </section>
-            {window.scrollY > 200 && (
+            {showButton && (
                 <button className={"scrollbut"} onClick={goToTop}>Volver</button>
             )}
         </section>

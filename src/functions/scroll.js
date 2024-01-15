@@ -5,3 +5,13 @@ export   const goToTop = () => {
     })
 
 }
+
+export const showRelativeToPosition = (setShowButton) => {
+    console.log(scrollY)
+    if (scrollY> 200) {
+        setShowButton(true)
+        return
+    }
+    setShowButton(false)
+
+}
