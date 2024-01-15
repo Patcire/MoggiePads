@@ -10,7 +10,7 @@ const LayoutPrivate = () => {
 
     return (
         <>{
-            userConnected ? <Outlet></Outlet> : <Navigate to={"/"}></Navigate>
+            userConnected.connected ? <Outlet></Outlet> : <Navigate to={"/"}></Navigate>
         }
         </>
     )

@@ -36,12 +36,14 @@ const FormRegister = () => {
         }
 
         if (saveUserInLocalStorage("users", infoNewUser)){
-            navigate("/feed")
-            showModal("success", "Now you are register!", "enjoy!")
             setUserConnected({
                 connected: true,
                 email: infoNewUser.email
             })
+            console.log(userConnected)
+            navigate("/feed")
+            showModal("success", "Now you are register!", "enjoy!")
+
             return
         }
 

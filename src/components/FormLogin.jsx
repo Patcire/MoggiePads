@@ -6,7 +6,7 @@ import {checkUser} from "../functions/localStorage.js";
 
 const FormLogin = () => {
 
-    const {userConnected, setUserConnected} = useContext(UserConnectedContext)
+    const {setUserConnected} = useContext(UserConnectedContext)
 
     const [infoForm, setInfoForm] = useState({
         email:"",
@@ -36,6 +36,7 @@ const FormLogin = () => {
 
             })
             navigate("/feed")
+            return
         }
 
         showModal("error", "Contraseña y correo no coinciden", "¡Vuelve a intentarlo!")

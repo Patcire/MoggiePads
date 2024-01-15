@@ -11,14 +11,17 @@ const Navbar = () => {
     const navigate = useNavigate()
 
     const logOut = () => {
-        setUserConnected(false)
+        setUserConnected({
+            connected:false,
+            email:""
+        })
         navigate("/")
     }
 
 
     return (
 
-                userConnected ?
+                userConnected.connected ?
                     (
                         <nav className={"header__navbar"}>
                             <NavLink to={"/"}>Inicio</NavLink>
