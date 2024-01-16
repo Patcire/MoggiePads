@@ -4,18 +4,16 @@ export const validateStrings = (string) => {
 
      let resultOfValidation = true
 
-
     if (string.trim().length<4) {
-
         resultOfValidation = false
-
-
     }
+
     else if (!string.match('^[a-zA-Z]+$')){
         resultOfValidation = false
     }
 
     return resultOfValidation
+
 }
 
 export const validateEmails = (email) => {
@@ -33,21 +31,23 @@ export const validatePassword = (pwd) => {
 
 
 export const validateDate = (date) => {
+
     const year = date.split("-")[0]
-    console.log(year)
 
     return year<2014 && year>1914
 
 }
 
 export const handleChange = (e, setInfoUser, infoUser) => {
+
     e.preventDefault()
     const {name, value} = e.target
+
     setInfoUser({
             ...infoUser,
             [name]: value
-        }
-    )
+    })
+
 }
 
 export const validateField = (e, setInfoUser, infoUser, setError, error) => {
@@ -117,7 +117,6 @@ export const notValidForm = (error, infoUser) => {
 
     return  Object.values(error).some((value) => value.length>0) ||
         Object.values(infoUser).some((value) => !value)
-
 
 }
 

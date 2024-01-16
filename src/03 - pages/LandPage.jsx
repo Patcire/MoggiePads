@@ -1,23 +1,24 @@
-import useSinglePhoto from "../06 - customHooks/useSinglePhoto.js";
+import useFreeCallAPI from "../06 - customHooks/useFreeCallAPI.js";
 import {useNavigate} from "react-router-dom";
 import Toast from "../04 - components/Toast.jsx";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 const LandPage = () => {
 
-    const {photo, loadOnePhoto} = useSinglePhoto()
-    const [show, setShow]  = useState(true)
+    const {photo, loadOnePhoto} = useFreeCallAPI()
+    const [showToast, setShowToast]  = useState(true)
     const navigate = useNavigate()
 
-
     setTimeout(()=> {
-    setShow(false)
-     console.log(show)
+
+    setShowToast(false)
+
     }, 10000)
 
 
 
     return(
+
         <section className={"landpage"}>
 
             <article className={"landpage__article"}>
@@ -26,7 +27,7 @@ const LandPage = () => {
                 <h1 className={"landpage__article__h1--v2"}>La mejor web de gatos</h1>
                 <p className={"landpage__article__p"}>
                     ¡Miles de fotos,
-                    anécdotas, curiosidades y poco más!
+                    algunos pequeños datos y poco más!
 
                 </p>
 
@@ -37,13 +38,10 @@ const LandPage = () => {
 
                 <img alt={"cat photo"} src={photo}
                      className={"landpage__article__img"} onClick={loadOnePhoto}></img>
-                <article className={"landpage__article__buttons-container"}>
-                    <button className={"primary-button--v3"} onClick={() => navigate("/register")}>Register now!!!
-                    </button>
-                </article>
 
             </article>
-            {show && <Toast message={" ¡Registrate para más diversión :) !"}></Toast>}
+
+            {showToast && <Toast message={" ¡Registrate para más diversión :) !"}></Toast>}
             <img alt={"cat ears"}
                  src={"resources/jack-dong-yJozLVBxNA0-unsplash-mod-removebg-preview.png"}
                  className={"landpage__article__img--detail"}></img>

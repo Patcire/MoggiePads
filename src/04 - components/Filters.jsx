@@ -1,8 +1,6 @@
 
 const Filters = ({handleFiltersClick}) => {
-
-
-
+    
     return (
         <section>
             <article>

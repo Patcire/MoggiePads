@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const useSinglePhoto = () =>{
+const useFreeCallAPI = () =>{
 
     const [photo, setPhoto] = useState("https://cdn2.thecatapi.com/images/dkh.jpg")
 
@@ -16,4 +16,4 @@ const useSinglePhoto = () =>{
     return {photo, loadOnePhoto}
 }
 
-export default useSinglePhoto
+export default useFreeCallAPI

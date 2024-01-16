@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 export const UserConnectedContext = createContext()
 
 const UserProvider = ({children}) => {
+
     const [userConnected, setUserConnected] = useState(
         {
             connected: false,

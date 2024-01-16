@@ -21,7 +21,7 @@ const FormContact = () => {
     })
 
 
-    const handleClick = (e) =>{
+    const handleSubmit = (e) =>{
        e.preventDefault()
         if (notValidForm(error, infoForm)){
             showModal("error", "Ooops", "¡Hay algún error en el formulario!")
@@ -99,7 +99,7 @@ const FormContact = () => {
             {error.checkboxError && <p className={"error__p"}>{error.checkboxError}</p>}
 
 
-            <button className={"form__button"} onClick={handleClick}>Enviar</button>
+            <button className={"form__button"} onClick={handleSubmit}>Enviar</button>
 
         </form>
     )

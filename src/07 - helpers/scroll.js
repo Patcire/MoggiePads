@@ -1,4 +1,5 @@
-export   const goToTop = () => {
+export  const goToTop = () => {
+
     window.scroll({
         top:0,
         behavior:"smooth"
@@ -7,13 +8,14 @@ export   const goToTop = () => {
 }
 
 export const showRelativeToPosition = (setShowButtons) => {
-    console.log(scrollY)
+
     if (scrollY> 200) {
         setShowButtons(prevState => ({
             ...prevState,
             goTop: true}))
         return
     }
+
     setShowButtons({goTOP:false})
 
 }

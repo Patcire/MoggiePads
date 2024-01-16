@@ -8,9 +8,10 @@ const LikeButton = ({cat, alreadyFav}) => {
 
     const {userConnected} = useContext(UserConnectedContext)
 
-    const [icon, setIcon] = useState(!!alreadyFav)
+    const [icon, setIcon] = useState(alreadyFav)
 
     const handleClick = () => {
+
         if (!icon) {
             saveFav(cat, userConnected.email)
             setIcon(!icon)
@@ -20,7 +21,6 @@ const LikeButton = ({cat, alreadyFav}) => {
         deleteFav(cat, userConnected.email)
         setIcon(!icon)
     }
-
 
     return (
         <button className={"like-button"} onClick={handleClick}>

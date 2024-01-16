@@ -10,7 +10,7 @@ const Gallery = ({info: infoFromAPI, alreadyFav, handleStatesWhenFilter,
                      handleInputOnSearchBar, handleClickOnSearch, goOutOfFilters}) => {
 
 
-    const userIsHere = window.location.href
+    const actualURL = window.location.href
     const [showButtons, setShowButtons] = useState({
         goTop:false})
 
@@ -28,7 +28,7 @@ const Gallery = ({info: infoFromAPI, alreadyFav, handleStatesWhenFilter,
         <section className={"gallery"}>
 
              {
-             userIsHere.includes("feed") &&
+             actualURL.includes("feed") &&
              <section className={"filters"}>
                  <form className={"filters__searchbar"}>
                      <h2>Busca por raza</h2>
@@ -56,7 +56,6 @@ const Gallery = ({info: infoFromAPI, alreadyFav, handleStatesWhenFilter,
                      <GiPerspectiveDiceSixFacesRandom className={"button_random__icon"}></GiPerspectiveDiceSixFacesRandom>
                      Infinitos
                  </button>
-
 
                  <section className={"filters__a"}>
                      <article>
@@ -99,6 +98,7 @@ const Gallery = ({info: infoFromAPI, alreadyFav, handleStatesWhenFilter,
                 </section>
              </section>
             }
+
             <section className={"cards"}>
 
                 {
@@ -108,9 +108,11 @@ const Gallery = ({info: infoFromAPI, alreadyFav, handleStatesWhenFilter,
                 }
 
             </section>
+
             {showButtons.goTop && (
                 <button className={"scrollbut"} onClick={goToTop}>Volver</button>
             )}
+
         </section>
     )
 

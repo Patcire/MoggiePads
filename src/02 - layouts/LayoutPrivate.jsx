@@ -2,8 +2,6 @@ import {Navigate, Outlet} from 'react-router-dom'
 import {UserConnectedContext} from "../05 - context/UserConnectedContext.jsx";
 import {useContext} from "react";
 
-
-
 const LayoutPrivate = () => {
 
     const {userConnected} = useContext(UserConnectedContext)

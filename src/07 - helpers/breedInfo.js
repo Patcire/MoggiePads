@@ -26,7 +26,7 @@ const termsMap = new Map ([
 
 
 export const findBreed = (breed) =>{
-    console.log(breed)
+
     return  termsMap.get(breed.toLowerCase()) || null
 
 }

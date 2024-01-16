@@ -37,8 +37,9 @@ const FeedPage = () => {
     }, [throttleHandleScroll])
 
     useEffect(() => {
+
         const url = `https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&page=${page}${breed}`
-        console.log(url)
+
         loading && fetch(url)
             .then(response => response.json())
             .then(data => {
@@ -50,9 +51,6 @@ const FeedPage = () => {
                 setLoading(false)
 
             })
-            .catch(error => console.log(error))
-
-
 
     }, [page, breed])
 
@@ -75,19 +73,18 @@ const FeedPage = () => {
     }
 
     const handleInputOnSearchBar = (e) => {
-        console.log(e.target.value)
+
         e.preventDefault()
         setSearchTerm(e.target.value)
-        console.log(searchTerm)
+
     }
 
     const handleClickOnSearch = (e) => {
+
         e.preventDefault()
-        console.log("searchTerm:", searchTerm)
-        console.log("findBreed result:", findBreed(searchTerm))
 
         const correspondentBreedId = findBreed(searchTerm)
-        console.log(correspondentBreedId)
+
         correspondentBreedId !== null ?
             handleStatesWhenFilter(correspondentBreedId)
             :
@@ -96,26 +93,28 @@ const FeedPage = () => {
 
 
     const goOutOfFilters = (e) =>{
+
         e.preventDefault()
         setInfoFromAPI([])
         setLoading(true)
         setBreed("")
+
     }
 
     return(
-        <>
-        <Gallery
-            info={infoFromAPI}
-            alreadyFav={false}
-            handleStatesWhenFilter={handleStatesWhenFilter}
-            handleInputOnSearchBar={handleInputOnSearchBar}
-            handleClickOnSearch={handleClickOnSearch}
-            goOutOfFilters={goOutOfFilters}
-        >
-        </Gallery>
+        <section>
+            <Gallery
+                info={infoFromAPI}
+                alreadyFav={false}
+                handleStatesWhenFilter={handleStatesWhenFilter}
+                handleInputOnSearchBar={handleInputOnSearchBar}
+                handleClickOnSearch={handleClickOnSearch}
+                goOutOfFilters={goOutOfFilters}
+            >
+            </Gallery>
 
-        <div className={"endPageRef"} ref={endPageRef}></div>
-        </>
+            <div className={"endPageRef"} ref={endPageRef}></div>
+        </section>
     )
 
 }

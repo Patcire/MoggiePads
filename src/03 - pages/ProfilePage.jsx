@@ -9,6 +9,7 @@ const ProfilePage = () => {
     const infoUser = getUserInSession(userConnected.email)
 
     return(
+
         <section className={"profile"}>
 
             <section className={"profile__banner"}>
@@ -40,6 +41,7 @@ const ProfilePage = () => {
 
         </section>
     )
+
 }
 
 export default ProfilePage

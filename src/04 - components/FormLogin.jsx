@@ -2,7 +2,7 @@ import {useContext, useEffect, useRef, useState} from "react";
 import {UserConnectedContext} from "/src/05 - context/UserConnectedContext.jsx";
 import {useNavigate} from "react-router-dom";
 import {notValidForm, showModal, validateField} from "/src/07 - helpers/Validations.js"
-import {checkUser} from "../07 - helpers/localStorage.js";
+import {checkUserCredentials} from "../07 - helpers/localStorage.js";
 
 const FormLogin = () => {
 
@@ -12,6 +12,7 @@ const FormLogin = () => {
         email:"",
         password:""
     })
+
     const [error, setError] = useState({
         emailError:"",
         passwordError: ""
@@ -28,13 +29,15 @@ const FormLogin = () => {
             return
         }
 
-        else if(checkUser(infoForm)){
+        else if(checkUserCredentials(infoForm)){
+
             setUserConnected({
 
                 connected: true,
                 email: infoForm.email
 
             })
+
             navigate("/feed")
             return
         }

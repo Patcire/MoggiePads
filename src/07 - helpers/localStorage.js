@@ -9,9 +9,11 @@ export const getLocalStorage = (key) =>{
     storage = JSON.parse(localStorage.getItem(key))
 
     return storage
+
 }
 
 export const saveUserInLocalStorage = (key, user) => {
+
     let storage = getLocalStorage(key)
 
     if (storage === null){
@@ -21,12 +23,14 @@ export const saveUserInLocalStorage = (key, user) => {
     const exist = storage.some(element => element.email === user.email)
 
     if (exist) return false
+
     storage.push(user)
     localStorage.setItem('users', JSON.stringify(storage))
     return true
+
 }
 
-export const checkUser = (infoUser) =>{
+export const checkUserCredentials = (infoUser) =>{
 
     const localStorage =  getLocalStorage("users")
 
@@ -68,14 +72,11 @@ export const deleteFav = (cat, email) =>{
     const userInfo = getUserInSession(email)
 
     const updatedFavs = userInfo.favs.filter((element) => element.id !== cat.id)
-    console.log(updatedFavs)
+
     storage.forEach((element) => {
         if (element.email === email)  element.favs = updatedFavs
     })
 
     localStorage.setItem('users', JSON.stringify(storage))
-
-
-
 
 }

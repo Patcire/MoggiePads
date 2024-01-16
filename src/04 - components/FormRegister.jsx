@@ -27,7 +27,6 @@ const FormRegister = () => {
 
     const navigate = useNavigate()
 
-
     const register = (e) => {
         e.preventDefault()
         if (notValidForm(error, infoNewUser)) {
@@ -40,7 +39,7 @@ const FormRegister = () => {
                 connected: true,
                 email: infoNewUser.email
             })
-            console.log(userConnected)
+
             navigate("/feed")
             showModal("success", "Now you are register!", "enjoy!")
 
