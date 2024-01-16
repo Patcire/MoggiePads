@@ -1,13 +1,14 @@
 
 import {useEffect, useRef, useState} from "react"
 import Gallery from "../04 - components/Gallery.jsx"
-import {token} from "../../token.js"
 import {findBreed} from "../07 - helpers/breedInfo.js";
 import {showModal} from "../07 - helpers/Validations.js";
 import { throttle } from 'lodash';
 
 
 const FeedPage = () => {
+
+    const token = import.meta.env.VITE_TOKEN
 
     const endPageRef = useRef(null)
 
