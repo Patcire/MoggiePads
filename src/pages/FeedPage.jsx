@@ -4,6 +4,7 @@ import Gallery from "../components/Gallery.jsx"
 import {token} from "../../token.js"
 import {findBreed} from "../functions/breedInfo.js";
 import {showModal} from "../functions/Validations.js";
+import { throttle } from 'lodash';
 
 
 const FeedPage = () => {
@@ -16,25 +17,28 @@ const FeedPage = () => {
     const [searchTerm, setSearchTerm] = useState("")
     const [loading, setLoading] = useState(true)
 
+
     const handleScroll = () => {
 
-        if (endPageRef.current && endPageRef.current.getBoundingClientRect().bottom <= window.innerHeight+ 2500) {
+        if (endPageRef.current && endPageRef.current.getBoundingClientRect().bottom <= window.innerHeight+ 2500 && !loading) {
             setLoading(true)
-            setPage(page+1)
+            setPage(prevState => prevState+1)
         }
 
     }
 
+    const throttleHandleScroll = throttle(handleScroll, 500)
+
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll)
+        window.addEventListener('scroll', throttleHandleScroll)
         return () => {
-            window.removeEventListener('scroll', handleScroll)
+            window.removeEventListener('scroll', throttleHandleScroll)
         }
     })
 
     useEffect(() => {
         const url = `https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&page=${page}${breed}`
-
+        console.log(url)
         loading && fetch(url)
             .then(response => response.json())
             .then(data => {
