@@ -86,7 +86,7 @@ body{
 }
 
 .logout:hover{
-    background: linear-gradient(to right, #fd943b, #ffed9f);
+    background: linear-gradient(to right, #fda085, #ffed9f);
     font-weight: bold;
 }
 
@@ -193,6 +193,61 @@ main{
 
 }
 
+.filters{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    padding: 3%;
+
+}
+
+.searchbar__button{
+    border-radius: 10px;
+    font-size: x-large;
+    padding-bottom: 2%;
+
+}
+
+.button__img{
+    padding-top: 30%;
+    align-items: center;
+}
+
+.filters__button_random{
+
+    border: none;
+    background-color: transparent;
+    align-items: center;
+    padding-top: 3%;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filters__button_random:hover{
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    transform: scale(1.1);
+}
+
+.button_random__icon{
+    font-size: 50px;
+}
+
+
+.searchbar__button:hover{
+    cursor: pointer;
+    background: linear-gradient(to right, #fda085, #ffed9f);
+    font-weight: bold;
+    border-color: #333333;
+    border: 3px solid;
+}
+
+
 .searchbar__input{
 
     margin-top: 1%;
@@ -205,9 +260,37 @@ main{
     color: #000000;
 }
 
-.searchbar__button{
+
+.a__list{
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    gap: 1%;
+    padding-bottom: 0.8%;
+    padding-right: 8%;
+}
+
+.a__title{
+    padding-bottom: 2%;
+}
+
+.li__a{
+
+    border-radius: 10px;
+    font-size: large;
 
 }
+
+.li__a:hover{
+    cursor: pointer;
+    background: linear-gradient(to right, #fda085, #ffed9f);
+    font-weight: bold;
+    border-color: #333333;
+    border: 3px solid;
+}
+
 
 .container__loader{
     display: flex;
@@ -288,7 +371,7 @@ background:
 
 .form__button{
     padding: 10px;
-    border: 2px solid #fd943b;
+    border: 2px solid #fda085;
     border-radius: 10px;
     margin-bottom: 10px;
     font-size: xx-large;
@@ -296,7 +379,7 @@ background:
 }
 
 .form__button:hover{
-    background: linear-gradient(to right, #fd943b, #ffed9f);
+    background: linear-gradient(to right, #fda085, #ffed9f);
     font-weight: bold;
     border-color: #333333;
     border: 3px solid;
@@ -457,18 +540,18 @@ input[type="checkbox"]{
     margin-top: 2%;
     margin-left: 20%;
     padding: 10px;
-    border: 2px solid #fd943b;
+    border: 2px solid #fda085;
     border-radius: 10px;
     margin-bottom: 10px;
     font-size: xx-large;
     cursor:pointer;
-    background: linear-gradient(to right, #fd943b, #ffed9f);
+    background: linear-gradient(to right, #fda085, #ffed9f);
 
 
 }
 
 .primary-button--v2:hover{
-    background: linear-gradient(to right, #fd943b, #ffed9f);
+    background: linear-gradient(to right, #fda085, #ffed9f);
     font-weight: bold;
     border-color: #333333;
     border: 3px solid;
@@ -482,13 +565,13 @@ input[type="checkbox"]{
     margin-bottom: 10px;
     font-size: x-large;
     cursor:pointer;
-    background: linear-gradient(to right, #fd943b, #ffed9f);
+    background: linear-gradient(to right, #fda085, #ffed9f);
 
 
 }
 
 .primary-button--v3:hover{
-    background: linear-gradient(to right, #fd943b, #ffed9f);
+    background: linear-gradient(to right, #fda085, #ffed9f);
     font-weight: bold;
     border-color: #333333;
     border: 5px solid;
@@ -691,7 +774,7 @@ textarea {
 
 .primary-button {
     padding: 10px;
-    border: 2px solid #fd943b;
+    border: 2px solid #fda085;
     border-radius: 10px;
     margin-bottom: 10px;
     font-size: xx-large;
@@ -699,7 +782,7 @@ textarea {
 }
 
 .primary-button:hover{
-    background: linear-gradient(to right, #fd943b, #ffed9f);
+    background: linear-gradient(to right, #fda085, #ffed9f);
     font-weight: bold;
     border-color: #333333;
     border: 3px solid;
@@ -716,3 +799,4 @@ textarea {
     border-radius: 5px;
     cursor: pointer;
 }
+

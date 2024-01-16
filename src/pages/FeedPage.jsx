@@ -94,7 +94,12 @@ const FeedPage = () => {
             showModal("error", "Raza no encontrada :(", "Prueba con alguna de las mostradas en los filtros\n (no uses acentos)")
     }
 
-
+    const handleDeleteFiltersParameters = (e) =>{
+        e.preventDefault()
+        setInfo([])
+        setLoading(true)
+        setBreed("")
+    }
 
     return(
         <>
@@ -103,7 +108,8 @@ const FeedPage = () => {
             alreadyFav={false}
             handleFilter={handleFilter}
             handleInput={handleInput}
-            handleClick={handleClick}>
+            handleClick={handleClick}
+            handleDeleteFiltersParameters={handleDeleteFiltersParameters}>
         </Gallery>
 
         <div className={"endPageRef"} ref={endPageRef}></div>
