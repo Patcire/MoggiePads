@@ -7,7 +7,7 @@
 ***
 
 [!IMPORTANT] 
-> Proyecto desplegado
+> Proyecto desplegado: https://moggiepads.netlify.app/
 
 0 - Introducción
 =
