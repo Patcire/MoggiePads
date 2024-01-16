@@ -2,9 +2,7 @@ import Card from "./Card.jsx";
 import {goToTop, showRelativeToPosition} from "../07 - helpers/scroll.js";
 import {abobUrl, abysUrl, baliUrl, bengUrl, birmUrl, persUrl, siamUrl, sphyUrl} from "../07 - helpers/breedInfo.js";
 import {useEffect, useState} from "react";
-import { IoMdSearch } from "react-icons/io";
-import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
-
+import { IoMdSearch, IoIosInfinite } from "react-icons/io";
 
 const Gallery = ({info: infoFromAPI, alreadyFav, handleStatesWhenFilter,
                      handleInputOnSearchBar, handleClickOnSearch, goOutOfFilters}) => {
@@ -31,7 +29,8 @@ const Gallery = ({info: infoFromAPI, alreadyFav, handleStatesWhenFilter,
              actualURL.includes("feed") &&
              <section className={"filters"}>
                  <form className={"filters__searchbar"}>
-                     <h2>Busca por raza</h2>
+                     <h2 className={"h2__searchbar"}>Busca por raza</h2>
+                     <article className={"container__searchbar"}>
                      <input
                          type={"text"}
                          placeholder={"Bengali, abisina..."}
@@ -48,13 +47,13 @@ const Gallery = ({info: infoFromAPI, alreadyFav, handleStatesWhenFilter,
                      >
                          <IoMdSearch className={"button__img"}/>
                      </button>
-
+                     </article>
                  </form>
 
                  <button className={"filters__button_random"}
                  onClick={goOutOfFilters}>
-                     <GiPerspectiveDiceSixFacesRandom className={"button_random__icon"}></GiPerspectiveDiceSixFacesRandom>
-                     Infinitos
+                     <IoIosInfinite className={"button_random__icon"}/>
+                     Gatos infinitos
                  </button>
 
                  <section className={"filters__a"}>
