@@ -16,7 +16,7 @@ const ProfilePage = () => {
                 <h3 className={"profile__h3"}> Mis favoritos</h3>
                 <article className={"profile__card"}>
 
-                    <img alt={"draw of cat"} src={"resources/cat-icon.png"}
+                    <img alt={"draw of cat"} src={"resources/cat-icon.jpg"}
                          className={"profile__card__img"}></img>
 
                     <article className={"profile__card__container"}>

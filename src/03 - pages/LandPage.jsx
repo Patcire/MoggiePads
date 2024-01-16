@@ -1,5 +1,4 @@
 import useFreeCallAPI from "../06 - customHooks/useFreeCallAPI.js";
-import {useNavigate} from "react-router-dom";
 import Toast from "../04 - components/Toast.jsx";
 import {useState} from "react";
 
@@ -7,7 +6,6 @@ const LandPage = () => {
 
     const {photo, loadOnePhoto} = useFreeCallAPI()
     const [showToast, setShowToast]  = useState(true)
-    const navigate = useNavigate()
 
     setTimeout(()=> {
 
@@ -43,7 +41,7 @@ const LandPage = () => {
 
             {showToast && <Toast message={" ¡Registrate para más diversión :) !"}></Toast>}
             <img alt={"cat ears"}
-                 src={"resources/jack-dong-yJozLVBxNA0-unsplash-mod-removebg-preview.png"}
+                 src={"resources/jack-dong-yJozLVBxNA0-unsplash-mod-removebg-preview.jpg"}
                  className={"landpage__article__img--detail"}></img>
 
 
