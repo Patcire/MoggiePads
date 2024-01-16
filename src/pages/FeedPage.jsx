@@ -13,7 +13,7 @@ const FeedPage = () => {
 
     const [page, setPage] = useState(0)
     const [breed, setBreed] = useState("")
-    const [info, setInfo] = useState([])
+    const [infoFromAPI, setInfoFromAPI] = useState([])
     const [searchTerm, setSearchTerm] = useState("")
     const [loading, setLoading] = useState(true)
 
@@ -44,9 +44,9 @@ const FeedPage = () => {
             .then(data => {
 
                 const filteredData = data.filter(cat => cat !== null && cat !== undefined && cat.breeds && cat.breeds.length > 0)
-                const combinedInfo = [...info, ...filteredData]
+                const combinedInfo = [...infoFromAPI, ...filteredData]
                 const noRepeatedMap = new Map(combinedInfo.map(item => [item.id, item]))
-                setInfo([...noRepeatedMap.values()])
+                setInfoFromAPI([...noRepeatedMap.values()])
                 setLoading(false)
 
             })
@@ -57,7 +57,7 @@ const FeedPage = () => {
     }, [page, breed])
 
 
-    if (!info || info.length===0) {
+    if (!infoFromAPI || infoFromAPI.length===0) {
         return(
             <article className={"container__loader"}>
                 <div className={"loader"}></div>
@@ -65,23 +65,23 @@ const FeedPage = () => {
         )
     }
 
-    const handleFilter = (breedInfo) =>{
+    const handleStatesWhenFilter = (breedInfo) =>{
 
         setPage(0)
-        setInfo([])
+        setInfoFromAPI([])
         setLoading(true)
         setBreed(breedInfo)
 
     }
 
-    const handleInput = (e) => {
+    const handleInputOnSearchBar = (e) => {
         console.log(e.target.value)
         e.preventDefault()
         setSearchTerm(e.target.value)
         console.log(searchTerm)
     }
 
-    const handleClick = (e) => {
+    const handleClickOnSearch = (e) => {
         e.preventDefault()
         console.log("searchTerm:", searchTerm)
         console.log("findBreed result:", findBreed(searchTerm))
@@ -89,14 +89,15 @@ const FeedPage = () => {
         const correspondentBreedId = findBreed(searchTerm)
         console.log(correspondentBreedId)
         correspondentBreedId !== null ?
-            handleFilter(correspondentBreedId)
+            handleStatesWhenFilter(correspondentBreedId)
             :
             showModal("error", "Raza no encontrada :(", "Prueba con alguna de las mostradas en los filtros\n (no uses acentos)")
     }
 
-    const handleDeleteFiltersParameters = (e) =>{
+
+    const goOutOfFilters = (e) =>{
         e.preventDefault()
-        setInfo([])
+        setInfoFromAPI([])
         setLoading(true)
         setBreed("")
     }
@@ -104,12 +105,13 @@ const FeedPage = () => {
     return(
         <>
         <Gallery
-            info={info}
+            info={infoFromAPI}
             alreadyFav={false}
-            handleFilter={handleFilter}
-            handleInput={handleInput}
-            handleClick={handleClick}
-            handleDeleteFiltersParameters={handleDeleteFiltersParameters}>
+            handleStatesWhenFilter={handleStatesWhenFilter}
+            handleInputOnSearchBar={handleInputOnSearchBar}
+            handleClickOnSearch={handleClickOnSearch}
+            goOutOfFilters={goOutOfFilters}
+        >
         </Gallery>
 
         <div className={"endPageRef"} ref={endPageRef}></div>

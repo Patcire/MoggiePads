@@ -6,12 +6,14 @@ export   const goToTop = () => {
 
 }
 
-export const showRelativeToPosition = (setShowButton) => {
+export const showRelativeToPosition = (setShowButtons) => {
     console.log(scrollY)
     if (scrollY> 200) {
-        setShowButton(true)
+        setShowButtons(prevState => ({
+            ...prevState,
+            goTop: true}))
         return
     }
-    setShowButton(false)
+    setShowButtons({goTOP:false})
 
 }

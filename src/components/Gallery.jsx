@@ -5,14 +5,17 @@ import {useEffect, useState} from "react";
 import { IoMdSearch } from "react-icons/io";
 import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
 
-const Gallery = ({info, alreadyFav, handleFilter, handleInput, handleClick, handleDeleteFiltersParameters}) => {
+const Gallery = ({info: infoFromAPI, alreadyFav, handleStatesWhenFilter,
+                     handleInputOnSearchBar, handleClickOnSearch, goOutOfFilters}) => {
 
 
     const userIsHere = window.location.href
-    const [showButton, setShowButton] = useState(false)
+    const [showButtons, setShowButtons] = useState({
+        goTop:false})
+
 
     const handleScrollYPosition = () =>{
-        showRelativeToPosition(setShowButton)
+        showRelativeToPosition(setShowButtons)
     }
 
 
@@ -33,59 +36,61 @@ const Gallery = ({info, alreadyFav, handleFilter, handleInput, handleClick, hand
                          placeholder={"Bengali, abisina..."}
                          className={"searchbar__input"}
                          name={"breed"}
-                         onChange={handleInput}
+                         onChange={handleInputOnSearchBar}
                      >
                      </input>
 
                      <button
                          type={"submit"}
                          className={"searchbar__button"}
-                         onClick={handleClick}
+                         onClick={handleClickOnSearch}
                      >
                          <IoMdSearch className={"button__img"}/>
                      </button>
 
                  </form>
+
                  <button className={"filters__button_random"}
-                 onClick={handleDeleteFiltersParameters}>
+                 onClick={goOutOfFilters}>
                      <GiPerspectiveDiceSixFacesRandom className={"button_random__icon"}></GiPerspectiveDiceSixFacesRandom>
-                     Gatos mezclados e infinitos
+                     Infinitos
                  </button>
+
 
                  <section className={"filters__a"}>
                      <article>
                          <h2 className={"a__title"}>Filtra por raza</h2>
                          <ul className={"a__list"}>
                              <li>
-                                 <a onClick={() => handleFilter(bengUrl)}
+                                 <a onClick={() => handleStatesWhenFilter(bengUrl)}
                                     className={"li__a"}>Bengalí</a>
                              </li>
                              <li>
-                                 <a onClick={() => handleFilter(abysUrl)}
+                                 <a onClick={() => handleStatesWhenFilter(abysUrl)}
                                     className={"li__a"}>Abisino</a>
                              </li>
                              <li>
-                                 <a onClick={() => handleFilter(persUrl)}
+                                 <a onClick={() => handleStatesWhenFilter(persUrl)}
                                     className={"li__a"}>Persa</a>
                              </li>
                              <li>
-                             <a onClick={() => handleFilter(siamUrl)}
+                             <a onClick={() => handleStatesWhenFilter(siamUrl)}
                                 className={"li__a"}>Siamés</a>
                              </li>
                              <li>
-                                 <a onClick={() => handleFilter(abobUrl)}
+                                 <a onClick={() => handleStatesWhenFilter(abobUrl)}
                                     className={"li__a"}>Americano</a>
                              </li>
                              <li>
-                                 <a onClick={() => handleFilter(baliUrl)}
+                                 <a onClick={() => handleStatesWhenFilter(baliUrl)}
                                     className={"li__a"}>Balinés</a>
                              </li>
                              <li>
-                                 <a onClick={() => handleFilter(birmUrl)}
+                                 <a onClick={() => handleStatesWhenFilter(birmUrl)}
                                     className={"li__a"}>Birmano</a>
                              </li>
                              <li>
-                                 <a onClick={() => handleFilter(sphyUrl)}
+                                 <a onClick={() => handleStatesWhenFilter(sphyUrl)}
                                     className={"li__a"}>Esfinge</a>
                              </li>
                      </ul>
@@ -96,13 +101,13 @@ const Gallery = ({info, alreadyFav, handleFilter, handleInput, handleClick, hand
             <section className={"cards"}>
 
                 {
-                    info.map((cat) => (
+                    infoFromAPI.map((cat) => (
                         <Card key={cat.id} cat={cat} loading="lazy" alreadyFav={alreadyFav}></Card>
                     ))
                 }
 
             </section>
-            {showButton && (
+            {showButtons.goTop && (
                 <button className={"scrollbut"} onClick={goToTop}>Volver</button>
             )}
         </section>
