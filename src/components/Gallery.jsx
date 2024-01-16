@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import { IoMdSearch } from "react-icons/io";
 import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";
 
+
 const Gallery = ({info: infoFromAPI, alreadyFav, handleStatesWhenFilter,
                      handleInputOnSearchBar, handleClickOnSearch, goOutOfFilters}) => {
 
