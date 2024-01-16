@@ -6,18 +6,18 @@ import { CiHeart } from "react-icons/ci";
 
 const LikeButton = ({cat, alreadyFav}) => {
 
-    const {user} = useContext(UserConnectedContext)
+    const {userConnected} = useContext(UserConnectedContext)
 
     const [icon, setIcon] = useState(!!alreadyFav)
 
     const handleClick = () => {
         if (!icon) {
-            saveFav(cat, user.email)
+            saveFav(cat, userConnected.email)
             setIcon(!icon)
             return
         }
 
-        deleteFav(cat, user.email)
+        deleteFav(cat, userConnected.email)
         setIcon(!icon)
     }
 
