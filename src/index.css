@@ -807,7 +807,9 @@ textarea {
 
 /* Media Queries para pantallas más pequeñas (tabletas y dispositivos móviles) */
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 600px) {
+
+
     .header {
         height: auto;
         padding: 0.5em;
@@ -823,7 +825,6 @@ textarea {
         padding-top: 10px;
     }
 
-
     .filters{
         height: auto;
         padding: 0.5em;
@@ -833,7 +834,44 @@ textarea {
         display: none;
     }
 
+    /* landpage */
+    .landpage__article__h1--v2{
+        font-size: xx-large;
 
+        padding-left: 10% ;
+
+    }
+
+    .landpage__article__p{
+        font-size: x-large;
+        padding-left: 10%;
+    }
+
+    .landpage__article__img{
+        margin-left: 20%;
+    }
+
+    /* login*/
+
+    .form{
+        width: auto;
+        padding-left: 5%;
+        padding-right: 5%;
+
+    }
+
+    .form__h1{
+        font-size: 2%;
+    }
+    .form__input{
+        font-size: x-large;
+        width: 80%;
+    }
+
+    .form__input--password{
+        font-size: x-large;
+        width: 80%;
+    }
 
 
 }
