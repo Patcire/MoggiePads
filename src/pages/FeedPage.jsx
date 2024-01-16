@@ -34,7 +34,7 @@ const FeedPage = () => {
         return () => {
             window.removeEventListener('scroll', throttleHandleScroll)
         }
-    })
+    }, [throttleHandleScroll])
 
     useEffect(() => {
         const url = `https://api.thecatapi.com/v1/images/search?limit=16${token}&has_breeds=1&page=${page}${breed}`
