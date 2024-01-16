@@ -6,7 +6,7 @@
 ![logo](resources/logo-moggiepads.JPG)
 ***
 
-[!IMPORTANT] 
+>[!IMPORTANT] 
 > Proyecto desplegado: https://moggiepads.netlify.app/
 
 0 - Introducción
