@@ -1,9 +1,9 @@
 
 import {useEffect, useRef, useState} from "react"
-import Gallery from "../components/Gallery.jsx"
+import Gallery from "../04 - components/Gallery.jsx"
 import {token} from "../../token.js"
-import {findBreed} from "../functions/breedInfo.js";
-import {showModal} from "../functions/Validations.js";
+import {findBreed} from "../07 - helpers/breedInfo.js";
+import {showModal} from "../07 - helpers/Validations.js";
 import { throttle } from 'lodash';
 
 

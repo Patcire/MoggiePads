@@ -1,5 +1,5 @@
 import {Navigate, Outlet} from 'react-router-dom'
-import {UserConnectedContext} from "../context/UserConnectedContext.jsx";
+import {UserConnectedContext} from "../05 - context/UserConnectedContext.jsx";
 import {useContext} from "react";
 
 

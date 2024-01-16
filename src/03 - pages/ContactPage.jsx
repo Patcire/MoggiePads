@@ -1,4 +1,4 @@
-import FormContact from "../components/FormContact.jsx";
+import FormContact from "../04 - components/FormContact.jsx";
 
 const ContactPage = () => {
     return(

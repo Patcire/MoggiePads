@@ -1,8 +1,8 @@
 import {useContext, useEffect, useRef, useState} from "react";
-import {UserConnectedContext} from "../context/UserConnectedContext.jsx";
+import {UserConnectedContext} from "../05 - context/UserConnectedContext.jsx";
 import {useNavigate} from "react-router-dom";
-import {notValidForm, showModal, validateField,} from "../functions/Validations.js";
-import {saveUserInLocalStorage} from "../functions/localStorage.js";
+import {notValidForm, showModal, validateField,} from "../07 - helpers/Validations.js";
+import {saveUserInLocalStorage} from "../07 - helpers/localStorage.js";
 
 const FormRegister = () => {
 

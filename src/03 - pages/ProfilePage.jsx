@@ -1,7 +1,7 @@
-import {getUserInSession} from "../functions/localStorage.js";
+import {getUserInSession} from "../07 - helpers/localStorage.js";
 import {useContext} from "react";
-import {UserConnectedContext} from "../context/UserConnectedContext.jsx";
-import Gallery from "../components/Gallery.jsx";
+import {UserConnectedContext} from "../05 - context/UserConnectedContext.jsx";
+import Gallery from "../04 - components/Gallery.jsx";
 
 const ProfilePage = () => {
 

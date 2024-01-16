@@ -1,6 +1,6 @@
 import {NavLink, useNavigate} from 'react-router-dom'
 import {useContext} from "react";
-import {UserConnectedContext} from "../context/UserConnectedContext.jsx";
+import {UserConnectedContext} from "../05 - context/UserConnectedContext.jsx";
 
 
 const Navbar = () => {

@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import LayoutRoot from "../layouts/LayoutRoot.jsx";
-import LoginPage from "../pages/LoginPage.jsx";
-import RegisterPage from "../pages/RegisterPage.jsx";
-import ContactPage from "../pages/ContactPage.jsx";
-import FeedPage from "../pages/FeedPage.jsx";
-import ProfilePage from "../pages/ProfilePage.jsx";
-import LandPage from "../pages/LandPage.jsx";
-import LayoutPrivate from "../layouts/LayoutPrivate.jsx";
+import LayoutRoot from "../02 - layouts/LayoutRoot.jsx";
+import LoginPage from "../03 - pages/LoginPage.jsx";
+import RegisterPage from "../03 - pages/RegisterPage.jsx";
+import ContactPage from "../03 - pages/ContactPage.jsx";
+import FeedPage from "../03 - pages/FeedPage.jsx";
+import ProfilePage from "../03 - pages/ProfilePage.jsx";
+import LandPage from "../03 - pages/LandPage.jsx";
+import LayoutPrivate from "../02 - layouts/LayoutPrivate.jsx";
 
 export const router = createBrowserRouter([
     {

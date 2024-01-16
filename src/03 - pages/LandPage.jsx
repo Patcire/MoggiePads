@@ -1,6 +1,6 @@
-import useSinglePhoto from "../customHooks/useSinglePhoto.js";
+import useSinglePhoto from "../06 - customHooks/useSinglePhoto.js";
 import {useNavigate} from "react-router-dom";
-import Toast from "../components/Toast.jsx";
+import Toast from "../04 - components/Toast.jsx";
 import {useEffect, useState} from "react";
 
 const LandPage = () => {

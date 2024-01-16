@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState} from "react";
-import {cleanForm, notValidForm, showModal, validateField} from "../functions/Validations.js";
+import {cleanForm, notValidForm, showModal, validateField} from "../07 - helpers/Validations.js";
 
 const FormContact = () => {
 

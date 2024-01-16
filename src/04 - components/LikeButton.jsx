@@ -1,6 +1,6 @@
-import {deleteFav, saveFav} from "../functions/localStorage.js";
+import {deleteFav, saveFav} from "../07 - helpers/localStorage.js";
 import {useContext, useState} from "react";
-import {UserConnectedContext} from "../context/UserConnectedContext.jsx";
+import {UserConnectedContext} from "../05 - context/UserConnectedContext.jsx";
 import { IoMdHeart } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 

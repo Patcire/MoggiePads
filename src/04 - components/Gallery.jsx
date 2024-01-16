@@ -1,6 +1,6 @@
 import Card from "./Card.jsx";
-import {goToTop, showRelativeToPosition} from "../functions/scroll.js";
-import {abobUrl, abysUrl, baliUrl, bengUrl, birmUrl, persUrl, siamUrl, sphyUrl} from "../functions/breedInfo.js";
+import {goToTop, showRelativeToPosition} from "../07 - helpers/scroll.js";
+import {abobUrl, abysUrl, baliUrl, bengUrl, birmUrl, persUrl, siamUrl, sphyUrl} from "../07 - helpers/breedInfo.js";
 import {useEffect, useState} from "react";
 import { IoMdSearch } from "react-icons/io";
 import { GiPerspectiveDiceSixFacesRandom } from "react-icons/gi";

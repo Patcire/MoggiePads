@@ -1,5 +1,5 @@
 
-import FormRegister from "../components/FormRegister.jsx";
+import FormRegister from "../04 - components/FormRegister.jsx";
 
 
 const RegisterPage = () => {

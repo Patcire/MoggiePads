@@ -1,4 +1,4 @@
-import Navbar from "../components/NavBar.jsx";
+import Navbar from ".//NavBar.jsx";
 
 const Header = () => {
     return (

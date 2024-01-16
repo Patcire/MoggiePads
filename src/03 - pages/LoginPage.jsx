@@ -1,5 +1,5 @@
 import {useNavigate} from "react-router-dom";
-import FormLogin from "../components/FormLogin.jsx";
+import FormLogin from "../04 - components/FormLogin.jsx";
 
 const LoginPage = () => {
 
